@@ -10,14 +10,16 @@ We sincerely thank the reviewer for the recognition of our problem framing, broa
 
 We agree that Table 6 compares algorithms but does not isolate CWRPO's internal mechanisms. We have now completed this ablation, removing each component independently under identical training across all 12 benchmarks (**Table R1**: Acc. for math, EM/F1 for QA, Pass@1 for code):
 
-| Variant | IID Avg. | OOD Avg. |
+| Variant | IID Avg. | OOD Avg.⁴ |
 |---|---|---|
-| CWRPO (Full) | 85.15 | 59.59 |
-| w/o Diversity Reward | 79.69 (−5.47) | 46.54 (−13.05) |
-| w/o Token Masking | 79.82 (−5.34) | 45.85 (−13.74) |
-| w/o Conditional Release | 80.60 (−4.55) | 46.11 (−13.48) |
+| CWRPO (Full) | 85.15 | 68.06 |
+| w/o Diversity Reward | 79.69 (−5.47) | 61.13 (−6.93) |
+| w/o Token Masking | 79.82 (−5.34) | 61.52 (−6.54) |
+| w/o Conditional Release | 80.60 (−4.55) | 60.74 (−7.32) |
 
-All three components are essential with comparable impact. Diversity reward ( $R_\text{diversity}$ , Eq. 12) has the largest IID drop — it is the gating scaffold for conditional release; without it, MATH drops 13.28 points (Proposition 3). Token masking (Eq. 10) has the largest OOD drop, with DS-1000 collapsing from 58.59→2.34, consistent with gradient variance destabilization on complex tasks (Proposition 6c, Eqs. 62–64). Conditional release (Eq. 14) uniquely impacts open-domain QA (TriviaQA EM −9.38, NQ EM −7.81), confirming shortcut suppression (Proposition 6b).
+⁴ OOD Avg. over 4 benchmarks (TriviaQA, NQ, MathQA, APPS); AIME 2025 and DS-1000 under re-evaluation.
+
+All three components are essential with comparable impact. Diversity reward ( $R_\text{diversity}$ , Eq. 12) has the largest IID drop — it is the gating scaffold for conditional release; without it, MATH drops 13.28 points (Proposition 3). Conditional release (Eq. 14) has the largest OOD drop, uniquely impacting open-domain QA (TriviaQA EM −9.38, NQ EM −7.81), confirming shortcut suppression (Proposition 6b). Token masking (Eq. 10) particularly degrades mathematical reasoning on OOD, with MathQA dropping from 88.67→78.12 (−10.55), consistent with gradient variance destabilization on complex tasks (Proposition 6c, Eqs. 62–64).
 
 **W2/Q2: Operator library transfer**
 
@@ -59,7 +61,7 @@ FlowSteer introduces a fundamentally different paradigm (Figure 2d):
 | RouterR1 | LLM routing | Fixed linear | Fixed | RL | LLM routes |
 | **FlowSteer** | **Canvas interact** | **Dynamic DAG** | **Per-task** | **CWRPO** | **12 pluggable** |
 
-FlowSteer is the only method that *dynamically constructs a workflow DAG with per-task prompt customization*: the policy submits atomic editing actions per turn (add/delete/modify/set_prompt/control structures, Eq. 6), the Canvas returns structured feedback (Eq. 7–8) for "diagnose-edit-verify" refinement (Section 4.2). Others either route to fixed tools, generate monolithic code, or use fixed pipelines with fixed prompts. Table 5 validates: removing multi-turn causes IID −5.15, removing Canvas causes the largest OOD drop.
+FlowSteer is the only method that *dynamically constructs a workflow DAG with per-task prompt customization*: the policy submits atomic editing actions per turn (add/delete/modify/set\_prompt/control structures, Eq. 6), the Canvas returns structured feedback (Eq. 7–8) for "diagnose-edit-verify" refinement (Section 4.2). Others either route to fixed tools, generate monolithic code, or use fixed pipelines with fixed prompts. Table 5 validates: removing multi-turn causes IID −5.15, removing Canvas causes the largest OOD drop.
 
 **W2: Plug-and-play is not "pure engineering"**
 
@@ -83,14 +85,16 @@ Table 6 confirms: CWRPO consistently outperforms GRPO on all 6 IID benchmarks (e
 
 We have completed this ablation, removing each CWRPO component independently under identical training (**Table R1**, Acc. for math, EM/F1 for QA, Pass@1 for code):
 
-| Variant | IID Avg. | OOD Avg. |
+| Variant | IID Avg. | OOD Avg.⁴ |
 |---|---|---|
-| CWRPO (Full) | 85.15 | 59.59 |
-| w/o Diversity Reward | 79.69 (−5.47) | 46.54 (−13.05) |
-| w/o Token Masking | 79.82 (−5.34) | 45.85 (−13.74) |
-| w/o Conditional Release | 80.60 (−4.55) | 46.11 (−13.48) |
+| CWRPO (Full) | 85.15 | 68.06 |
+| w/o Diversity Reward | 79.69 (−5.47) | 61.13 (−6.93) |
+| w/o Token Masking | 79.82 (−5.34) | 61.52 (−6.54) |
+| w/o Conditional Release | 80.60 (−4.55) | 60.74 (−7.32) |
 
-All three components contribute comparably. Diversity reward has the largest IID drop (MATH −13.28); token masking has the largest OOD drop (DS-1000: 58.59→2.34); conditional release uniquely impacts open-domain QA (TriviaQA EM −9.38, NQ EM −7.81). Together with Table 5 (framework ablation) and Table 6 (RL algorithm comparison), we provide three complementary ablation levels: framework → RL algorithm → CWRPO internals.
+⁴ OOD Avg. over 4 benchmarks (TriviaQA, NQ, MathQA, APPS); AIME 2025 and DS-1000 under re-evaluation.
+
+All three components contribute comparably. Diversity reward has the largest IID drop (MATH −13.28); conditional release has the largest OOD drop, uniquely impacting open-domain QA (TriviaQA EM −9.38, NQ EM −7.81); token masking particularly degrades mathematical reasoning (MathQA: 88.67→78.12, −10.55). Together with Table 5 (framework ablation) and Table 6 (RL algorithm comparison), we provide three complementary ablation levels: framework → RL algorithm → CWRPO internals.
 
 ---
 
@@ -154,7 +158,7 @@ The paper includes two complementary ablation layers; we now add a third:
 
 (b) *RL algorithm comparison* (Table 6 + Figure 5c-e): Under identical Canvas interaction, CWRPO outperforms GRPO on all IID (GSM8K 96.09 vs. 92.97, MATH 81.25 vs. 73.43). Isolates CWRPO from the interaction paradigm. **Table R8** (new) extends to 6 OOD benchmarks.
 
-(c) *CWRPO component ablation* (**Table R1**, new): All three components essential — diversity reward: IID −5.47; token masking: OOD −13.74; conditional release: unique QA impact (NQ EM −7.81). Decomposes CWRPO's three mechanisms.
+(c) *CWRPO component ablation* (**Table R1**, new): All three components essential — diversity reward: IID −5.47; conditional release: OOD −7.32, unique QA impact (NQ EM −7.81); token masking: MathQA −10.55. Decomposes CWRPO's three mechanisms.
 
 Together: (a) multi-turn essential, (b) CWRPO adds value with interaction constant, (c) isolates reward design from optimization.
 
@@ -189,3 +193,4 @@ Vectorized rollout (Appendix G): 32-way concurrency, batched API calls, cached s
 **Q5: Cross-backend generalization**
 
 We address this in Section 5.4 (RQ3): Figure 4(a) radar charts across 6 backends (DeepSeek-V3.2, Grok-4.1-Fast, GPT-5.2, Claude-Opus-4.5, Gemini-3-Flash, Qwen-Plus-Latest); Figure 4(b) aggregated gains by task category; Figure 4(c) convergent training dynamics for GPT-4o-mini and OSS-120B. Generalization stems from orchestrating at the *workflow structure level* via semantic operator descriptions (Table 7), not backend-specific tokens. The factored action space $O(\lvert A_\text{type}\rvert+\lvert\mathcal{O}\rvert)$ requires zero backend adaptation.
+
