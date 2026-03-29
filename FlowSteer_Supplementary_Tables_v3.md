@@ -180,7 +180,7 @@ Statistics collected during standard inference across all 12 benchmarks (6 IID +
 
 ## Table R7: Per-Step Training Cost Comparison
 
-**Purpose**: Compare the per-step computational cost across SFT, GRPO, and FlowSteer (CWRPO) training. This contextualizes the training overhead of multi-turn RL relative to standard fine-tuning and single-turn RL baselines. All measurements are taken on 2×A100-80GB with identical batch size and sequence length settings.
+Per-step computational cost across SFT, GRPO, and FlowSteer (CWRPO) training, contextualizing the overhead of multi-turn RL relative to standard fine-tuning and single-turn RL baselines. Each step processes a batch of 36 questions. All measurements are taken on 2×A100-80GB with identical batch size and sequence length settings.
 
 | Metric | SFT | GRPO | FlowSteer |
 |---|---|---|---|
@@ -188,8 +188,3 @@ Statistics collected during standard inference across all 12 benchmarks (6 IID +
 | Completion Tokens | 0 | 108,315 | 132,146 |
 | Training Tokens | 5,534 | 6,917 | 36,828 |
 | **Total Tokens** | **5,534** | **115,232** | **168,974** |
-
-**Key observations**:
-- FlowSteer's per-step time (1,004s) is **20% faster** than GRPO (1,257s) despite generating more completion tokens (132K vs. 108K), thanks to vectorized rollout with 32-way concurrency, cached states, and early-finish skip (Appendix G).
-- SFT is orders of magnitude cheaper per step but requires expert-curated trajectories and cannot explore; FlowSteer's RL training amortizes across 6 zero-shot backends (Figure 4).
-- FlowSteer uses ~5.3× more training tokens per step than GRPO (36,828 vs. 6,917) due to multi-turn Canvas interaction, but the richer gradient signal yields significantly higher sample efficiency (Table 6).
