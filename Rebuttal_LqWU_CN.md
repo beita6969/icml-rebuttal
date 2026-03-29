@@ -1,6 +1,6 @@
 感谢审稿人对我们问题建模和广泛评估的认可。以下通过新实验逐一回应各项关切（完整数据见 https://anonymous.4open.science/r/Supplementary）。
 
-#### W1/Q1：CWRPO 组件级消融（新增：Table R1 | 论文：Tables 5, 6）
+**W1/Q1：CWRPO 组件级消融（新增：Table R1 | 论文：Tables 5, 6）**
 
 我们已在全部 12 个基准上完成该消融，在相同训练设置下逐一移除各组件（新**表 R1**）：
 
@@ -13,9 +13,7 @@
 
 各组件解决不同挑战：**(1) Token Masking** 解决多轮信用分配——环境 token 污染梯度，数学推理退化最严重（MATH −13.28，MathQA −10.55）。**(2) Diversity Reward** 防止结构模式坍缩——策略收敛到捷径 workflow，在未见分布上失败（OOD 下降最大 −9.28；AIME −10.00，DS-1000 −12.50，APPS −11.71）。**(3) Conditional Release** 防止过早收敛——缺失课程门控后策略提前终止，开放域 QA 退化最大（TriviaQA EM −9.38，NQ EM −7.81）。三类失效正交（影响不同任务，无法互补），证明 CWRPO 是最小完备设计。结合 Table 5（框架级）和 Table 6（RL 算法级），构成三层消融体系。
 
----
-
-#### W2/Q2：算子库迁移（新增：Tables R2–R4 | 论文：Table 7, Prop. 1）
+**W2/Q2：算子库迁移（新增：Tables R2–R4 | 论文：Table 7, Prop. 1）**
 
 我们完成了三层迁移实验（新**表 R2–R4**），评估算子库在修改下的表现。
 
@@ -23,9 +21,7 @@
 
 *替换与新增*（新**表 R3–R4**）：用未见替代实现替换（Programmer→Jupyter Kernel，Custom→Generate with Skills），几乎无损，均值 IID 85.42（+0.3）/ OOD 59.69（+0.1）。新增训练时未见的算子在目标任务上选择性提升——+Search：TriviaQA/NQ +5.47/+8.59 EM；+Debugger：APPS/DS-1000 +2.35/+3.91——非目标零退化。两项能力源于分解式动作空间（Proposition 1）：$O(\\lvert\\mathcal{A}\_{\\text{type}}\\rvert + \\lvert\\mathcal{O}\\rvert)$ 复杂度，语义选择算子（Table 7）实现零样本迁移。
 
----
-
-#### W3/Q3：结构先验敏感性（新增：Tables R5, R6 | 论文：Prop. 4, Figure 5）
+**W3/Q3：结构先验敏感性（新增：Tables R5, R6 | 论文：Prop. 4, Figure 5）**
 
 **结构约束是理论必要的，而非启发式设定。** Proposition 4（附录 B.1）定义了完整 workflow 必须覆盖的 7 个认知原语：生成、验证、聚合、条件分支、顺序链接、集成和格式化。通过满射覆盖（公式 19–25）证明每个原语需至少一个算子实现，且某些原语（如验证 vs. 生成）需功能上不同的实现，理论最小值为 5 个算子。
 
@@ -34,5 +30,3 @@
 **结构先验教会策略*何时停止*，而非偏向更长 workflow。** 新**表 R6** 显示任务自适应复杂度：GSM8K 平均 8.3 轮 / 21.9K tokens，AIME 12.4 轮 / 47.2K tokens（Spearman ρ=0.65，p=0.021）。Figure 5(a-b) 显示 CWRPO（Full）token 消耗*低于*所有消融变体——移除先验反而*增加*成本，因为策略过度探索。
 
 **局限性**：公开基准数据；沙盒执行（附录 A.2）；12 个算子覆盖数学/QA/代码——更广泛领域需扩展；本地模型可降低成本（Figure 4c）。
-
----
