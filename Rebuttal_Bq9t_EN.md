@@ -1,6 +1,6 @@
 # Reviewer Bq9t (Score: 3, Weak Reject)
 
-We thank the reviewer for recognizing our operator library and diversity-constrained reward. We address each concern below (full tables in [Supplementary](https://anonymous.4open.science/r/Supplementary)).
+We thank the reviewer for recognizing our operator library and diversity-constrained reward. We address each concern below (full tables in https://anonymous.4open.science/r/Supplementary).
 
 **W1: Design differences from existing methods** (Paper: Table 5, Def. 1)
 

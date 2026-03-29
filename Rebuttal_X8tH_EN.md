@@ -1,6 +1,6 @@
 # Reviewer X8tH (Score: 4, Weak Accept)
 
-We thank the reviewer. We address each concern with existing theory and new experiments (full tables in [Supplementary](https://anonymous.4open.science/r/Supplementary)).
+We thank the reviewer. We address each concern with existing theory and new experiments (full tables in https://anonymous.4open.science/r/Supplementary).
 
 **W1/Q1: Theoretical grounding and reward stability** (New: Tables R1, R5 | Paper: Prop. 3)
 

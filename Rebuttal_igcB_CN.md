@@ -1,6 +1,6 @@
 # 审稿人 igcB（评分：3，弱拒绝）
 
-感谢审稿人对条件释放机制、全面评估和即插即用设计的认可。以下逐一回应各项关切（完整数据见 [补充材料](https://anonymous.4open.science/r/Supplementary)）。
+感谢审稿人对条件释放机制、全面评估和即插即用设计的认可。以下逐一回应各项关切（完整数据见 https://anonymous.4open.science/r/Supplementary）。
 
 **W1：算子库可扩展性与功能重叠工具**（新增：Tables R2–R4 | 论文：Prop. 1, 4）
 

@@ -1,6 +1,6 @@
 # 审稿人 X8tH（评分：4，弱接受）
 
-感谢审稿人的积极评价。以下逐一回应各项关切，结合已有理论分析和新实验数据（完整数据见 [补充材料](https://anonymous.4open.science/r/Supplementary)）。
+感谢审稿人的积极评价。以下逐一回应各项关切，结合已有理论分析和新实验数据（完整数据见 https://anonymous.4open.science/r/Supplementary）。
 
 **W1/Q1：理论基础与奖励稳定性**（新增：Tables R1, R5 | 论文：Prop. 3）
 

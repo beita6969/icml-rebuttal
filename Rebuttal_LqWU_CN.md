@@ -1,6 +1,6 @@
 # 审稿人 LqWU（评分：4，弱接受）
 
-感谢审稿人对我们问题建模和广泛评估的认可。以下通过新实验逐一回应各项关切（完整数据见 [补充材料](https://anonymous.4open.science/r/Supplementary)）。
+感谢审稿人对我们问题建模和广泛评估的认可。以下通过新实验逐一回应各项关切（完整数据见 https://anonymous.4open.science/r/Supplementary）。
 
 **W1/Q1：CWRPO 组件级消融**（新增：Table R1 | 论文：Tables 5, 6）
 
