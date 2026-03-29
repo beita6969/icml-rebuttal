@@ -22,7 +22,7 @@ Each variant disables exactly one CWRPO component while keeping all others uncha
 
 ### OOD Benchmarks
 
-| Setting | TriviaQA EM | TriviaQA F1 | NQ EM | NQ F1 | MathQA | AIME 2025 | APPS | DS-1000 | <b>OOD Avg.</b> |
+| Setting | TriviaQA EM | TriviaQA F1 | NQ EM | NQ F1 | MathQA | AIME 2025 | APPS | DS‑1000 | <b>OOD Avg.</b> |
 |---|---|---|---|---|---|---|---|---|---|
 | <b>CWRPO (Full)</b> | <b>79.69<sub>±0.6</sub></b> | <b>84.11<sub>±0.1</sub></b> | <b>54.69<sub>±0.7</sub></b> | <b>62.56<sub>±0.4</sub></b> | <b>88.67<sub>±0.4</sub></b> | <b>26.67<sub>±0.4</sub></b> | <b>49.21<sub>±0.6</sub></b> | <b>58.59<sub>±0.5</sub></b> | <b>59.59<sub>±0.2</sub></b> |
 | w/o Cond. Release | 70.31<sub>±0.5</sub> | 79.43<sub>±0.7</sub> | 46.88<sub>±0.6</sub> | 55.36<sub>±0.5</sub> | 83.59<sub>±0.8</sub> | 23.33<sub>±0.3</sub> | 42.19<sub>±0.4</sub> | 50.78<sub>±0.8</sub> | <b>52.85<sub>±0.5</sub></b> (−6.74) |
@@ -49,7 +49,7 @@ Operators are removed from the library at inference time without retraining, tes
 
 ### OOD Benchmarks
 
-| Setting | TriviaQA EM | TriviaQA F1 | NQ EM | NQ F1 | MathQA | AIME 2025 | APPS | DS-1000 | <b>OOD Avg.</b> |
+| Setting | TriviaQA EM | TriviaQA F1 | NQ EM | NQ F1 | MathQA | AIME 2025 | APPS | DS‑1000 | <b>OOD Avg.</b> |
 |---|---|---|---|---|---|---|---|---|---|
 | <b>Full (12 ops)</b> | <b>79.69<sub>±0.1</sub></b> | <b>84.11<sub>±0.6</sub></b> | <b>54.69<sub>±0.8</sub></b> | <b>62.56<sub>±0.2</sub></b> | <b>88.67<sub>±0.7</sub></b> | <b>26.67<sub>±0.3</sub></b> | <b>49.21<sub>±0.6</sub></b> | <b>58.59<sub>±0.7</sub></b> | <b>59.59<sub>±0.9</sub></b> |
 | −Review, Revise | 79.69<sub>±0.6</sub> | 83.98<sub>±0.6</sub> | 50.78<sub>±0.2</sub> | 58.49<sub>±0.4</sub> | 88.67<sub>±0.6</sub> | 26.67<sub>±0.7</sub> | 49.21<sub>±0.9</sub> | 58.59<sub>±0.5</sub> | <b>58.94<sub>±0.7</sub></b> (−0.65) |
@@ -76,7 +76,7 @@ Existing operators are replaced with functionally similar but implementation-dif
 
 ### OOD Benchmarks
 
-| Setting | TriviaQA EM | TriviaQA F1 | NQ EM | NQ F1 | MathQA | AIME 2025 | APPS | DS-1000 | <b>OOD Avg.</b> |
+| Setting | TriviaQA EM | TriviaQA F1 | NQ EM | NQ F1 | MathQA | AIME 2025 | APPS | DS‑1000 | <b>OOD Avg.</b> |
 |---|---|---|---|---|---|---|---|---|---|
 | <b>Full (original)</b> | <b>79.69<sub>±0.3</sub></b> | <b>84.11<sub>±0.5</sub></b> | <b>54.69<sub>±0.7</sub></b> | <b>62.56<sub>±0.4</sub></b> | <b>88.67<sub>±0.5</sub></b> | <b>26.67<sub>±0.4</sub></b> | <b>49.21<sub>±0.5</sub></b> | <b>58.59<sub>±0.2</sub></b> | <b>59.59<sub>±0.7</sub></b> |
 | Prog.→Jupyter | 79.69<sub>±0.7</sub> | 84.1<sub>±0.8</sub> | 54.69<sub>±0.8</sub> | 62.33<sub>±0.3</sub> | 88.67<sub>±0.9</sub> | 30.0<sub>±0.8</sub> | 52.34<sub>±0.6</sub> | 62.5<sub>±0.4</sub> | <b>61.31<sub>±0.7</sub></b> (+1.73) |
@@ -100,7 +100,7 @@ Novel operators unseen during training are added to the library at inference tim
 
 ### OOD Benchmarks
 
-| Setting | TriviaQA EM | TriviaQA F1 | NQ EM | NQ F1 | MathQA | AIME 2025 | APPS | DS-1000 | <b>OOD Avg.</b> |
+| Setting | TriviaQA EM | TriviaQA F1 | NQ EM | NQ F1 | MathQA | AIME 2025 | APPS | DS‑1000 | <b>OOD Avg.</b> |
 |---|---|---|---|---|---|---|---|---|---|
 | <b>Full (12 ops)</b> | <b>79.69<sub>±0.6</sub></b> | <b>84.11<sub>±0.8</sub></b> | <b>54.69<sub>±0.6</sub></b> | <b>62.56<sub>±0.8</sub></b> | <b>88.67<sub>±0.4</sub></b> | <b>26.67<sub>±0.9</sub></b> | <b>49.21<sub>±0.4</sub></b> | <b>58.59<sub>±0.7</sub></b> | <b>59.59<sub>±0.4</sub></b> |
 | + Search | 85.16<sub>±0.1</sub> | 90.78<sub>±0.7</sub> | 63.28<sub>±0.3</sub> | 67.99<sub>±0.9</sub> | 88.67<sub>±0.7</sub> | 26.67<sub>±0.2</sub> | 49.21<sub>±0.7</sub> | 58.59<sub>±0.4</sub> | <b>61.93<sub>±0.8</sub></b> (+2.34) |
@@ -124,7 +124,7 @@ Hyperparameters of the structural diversity reward are varied while keeping all 
 
 ### Part A: Minimum Operator Threshold — OOD
 
-| Setting | min_ops | TriviaQA (EM) | NQ (EM) | MathQA | AIME 2025 | APPS | DS-1000 | <b>OOD Avg.</b> |
+| Setting | min_ops | TriviaQA (EM) | NQ (EM) | MathQA | AIME 2025 | APPS | DS‑1000 | <b>OOD Avg.</b> |
 |---|---|---|---|---|---|---|---|---|
 | <b>Default</b> | <b>5</b> | <b>79.69</b> | <b>54.69</b> | <b>88.67</b> | <b>26.67</b> | <b>49.21</b> | <b>58.59</b> | <b>59.59</b> |
 | Relaxed | 4 | 75.00 | 49.22 | 85.93 | 23.33 | 39.84 | 40.62 | <b>52.32</b> (−7.27) |
@@ -137,15 +137,15 @@ Hyperparameters of the structural diversity reward are varied while keeping all 
 |---|---|---|---|---|---|---|---|---|
 | <b>Default</b> | <b>0.2 / 0.2 / 0.2 / 0.4</b> | <b>96.09</b> | <b>81.25</b> | <b>78.12</b> | <b>78.12</b> | <b>84.38</b> | <b>92.96</b> | <b>85.15</b> |
 | Equal weights | 0.25 / 0.25 / 0.25 / 0.25 | 94.53 | 76.56 | 73.44 | 75.78 | 82.81 | 90.62 | <b>82.29</b> (−2.86) |
-| Checker-heavy | 0.4 / 0.2 / 0.2 / 0.2 | 95.31 | 78.13 | 75.00 | 75.78 | 82.81 | 90.62 | <b>82.94</b> (−2.21) |
+| Checker‑heavy | 0.4 / 0.2 / 0.2 / 0.2 | 95.31 | 78.13 | 75.00 | 75.78 | 82.81 | 90.62 | <b>82.94</b> (−2.21) |
 
 ### Part B: Reward Weight Distribution — OOD
 
-| Setting | Weights (chk/fmt/op/ctrl) | TriviaQA (EM) | NQ (EM) | MathQA | AIME 2025 | APPS | DS-1000 | <b>OOD Avg.</b> |
+| Setting | Weights (chk/fmt/op/ctrl) | TriviaQA (EM) | NQ (EM) | MathQA | AIME 2025 | APPS | DS‑1000 | <b>OOD Avg.</b> |
 |---|---|---|---|---|---|---|---|---|
 | <b>Default</b> | <b>0.2 / 0.2 / 0.2 / 0.4</b> | <b>79.69</b> | <b>54.69</b> | <b>88.67</b> | <b>26.67</b> | <b>49.21</b> | <b>58.59</b> | <b>59.59</b> |
 | Equal weights | 0.25 / 0.25 / 0.25 / 0.25 | 74.22 | 50.78 | 85.93 | 26.67 | 44.53 | 51.36 | <b>55.58</b> (−4.01) |
-| Checker-heavy | 0.4 / 0.2 / 0.2 / 0.2 | 71.88 | 53.91 | 84.38 | 23.33 | 42.97 | 50.00 | <b>54.41</b> (−5.18) |
+| Checker‑heavy | 0.4 / 0.2 / 0.2 / 0.2 | 71.88 | 53.91 | 84.38 | 23.33 | 42.97 | 50.00 | <b>54.41</b> (−5.18) |
 
 ---
 
@@ -166,7 +166,7 @@ Statistics collected during standard inference across all 12 benchmarks (6 IID +
 | MBPP | Code (IID) | 7.24 | 17.32 | 2.37 | 2.37 | 14.03 | 9.61 | 0.0008 |
 | HumanEval | Code (IID) | 7.10 | 17.72 | 2.70 | 2.70 | 10.56 | 9.80 | 0.0007 |
 | APPS | Code (OOD) | 15.58 | 54.14 | 12.45 | 2.18 | 37.38 | 28.33 | 0.0026 |
-| DS-1000 | Code (OOD) | 11.68 | 36.74 | 2.71 | 2.13 | 24.09 | 14.70 | 0.0015 |
+| DS‑1000 | Code (OOD) | 11.68 | 36.74 | 2.71 | 2.13 | 24.09 | 14.70 | 0.0015 |
 
 <b>Spearman rank correlation</b>:
 

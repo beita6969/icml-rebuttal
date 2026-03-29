@@ -24,7 +24,7 @@ This document provides complete experimental results referenced in our author re
 
 ### OOD Benchmarks
 
-| Setting | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA (Acc.) | APPS (Pass@1) | AIME 2025 (Acc.)‡ | DS-1000 (Pass@1)‡ |
+| Setting | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA (Acc.) | APPS (Pass@1) | AIME 2025 (Acc.)‡ | DS‑1000 (Pass@1)‡ |
 |---|---|---|---|---|---|---|
 | **CWRPO (Full)** | **79.69 / 84.11** | **54.69 / 62.56** | **88.67** | **49.21** | ‡ | ‡ |
 | w/o Conditional Release | 70.31 / 79.43 | 46.88 / 55.36 | 83.59 | 42.19 | ‡ | ‡ |
@@ -59,7 +59,7 @@ This document provides complete experimental results referenced in our author re
 
 ### OOD Benchmarks
 
-| Setting | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA (Acc.) | AIME 2025 (Acc.) | APPS (Pass@1) | DS-1000 (Pass@1) |
+| Setting | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA (Acc.) | AIME 2025 (Acc.) | APPS (Pass@1) | DS‑1000 (Pass@1) |
 |---|---|---|---|---|---|---|
 | **Full (12 operators)** | **79.69 / 84.11** | **54.69 / 62.56** | **88.67** | **26.67** | **49.21** | **58.59** |
 | −Review, Revise | TBD | TBD | TBD | TBD | TBD | TBD |
@@ -87,17 +87,17 @@ This document provides complete experimental results referenced in our author re
 |---|---|---|---|---|---|---|
 | **Full (original implementations)** | **96.09** | **81.25** | **78.12 / 84.98** | **78.12 / 83.67** | **84.38** | **92.96** |
 | Programmer → Jupyter Kernel | TBD | TBD | TBD | TBD | TBD | TBD |
-| Custom → RAG-based Retriever | TBD | TBD | TBD | TBD | TBD | TBD |
-| Review → LLM-as-Judge | TBD | TBD | TBD | TBD | TBD | TBD |
+| Custom → RAG‑based Retriever | TBD | TBD | TBD | TBD | TBD | TBD |
+| Review → LLM‑as‑Judge | TBD | TBD | TBD | TBD | TBD | TBD |
 
 ### OOD Benchmarks
 
-| Setting | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA (Acc.) | AIME 2025 (Acc.) | APPS (Pass@1) | DS-1000 (Pass@1) |
+| Setting | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA (Acc.) | AIME 2025 (Acc.) | APPS (Pass@1) | DS‑1000 (Pass@1) |
 |---|---|---|---|---|---|---|
 | **Full (original implementations)** | **79.69 / 84.11** | **54.69 / 62.56** | **88.67** | **26.67** | **49.21** | **58.59** |
 | Programmer → Jupyter Kernel | TBD | TBD | TBD | TBD | TBD | TBD |
-| Custom → RAG-based Retriever | TBD | TBD | TBD | TBD | TBD | TBD |
-| Review → LLM-as-Judge | TBD | TBD | TBD | TBD | TBD | TBD |
+| Custom → RAG‑based Retriever | TBD | TBD | TBD | TBD | TBD | TBD |
+| Review → LLM‑as‑Judge | TBD | TBD | TBD | TBD | TBD | TBD |
 
 **Key Observations**:
 - Substitution causes only minor performance shifts, demonstrating that Flow-Director's operator selection is semantic-level rather than index-based.
@@ -123,7 +123,7 @@ This document provides complete experimental results referenced in our author re
 
 ### OOD Benchmarks
 
-| Setting | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA (Acc.) | AIME 2025 (Acc.) | APPS (Pass@1) | DS-1000 (Pass@1) |
+| Setting | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA (Acc.) | AIME 2025 (Acc.) | APPS (Pass@1) | DS‑1000 (Pass@1) |
 |---|---|---|---|---|---|---|
 | **Full (12 operators)** | **79.69 / 84.11** | **54.69 / 62.56** | **88.67** | **26.67** | **49.21** | **58.59** |
 | + WebSearch | TBD | TBD | TBD | TBD | TBD | TBD |
@@ -157,7 +157,7 @@ This document provides complete experimental results referenced in our author re
 
 ### Part A: Minimum Operator Threshold — OOD
 
-| Setting | min_ops | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA | AIME 2025 | APPS | DS-1000 | OOD Avg. |
+| Setting | min_ops | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA | AIME 2025 | APPS | DS‑1000 | OOD Avg. |
 |---|---|---|---|---|---|---|---|---|
 | **Default** | 5 | **79.69 / 84.11** | **54.69 / 62.56** | **88.67** | **26.67** | **49.21** | **58.59** | **59.59** |
 | Relaxed | 4 | 75.00 / 84.21 | 49.22 / 58.01 | 85.93 | 23.33 | 39.84 | 40.62 | 52.32 (−7.27) |
@@ -172,15 +172,15 @@ All variants keep total weight sum = 1.0, ensuring $R_{\text{diversity}}$ can al
 |---|---|---|---|---|---|---|---|---|
 | **Default** | 0.2 / 0.2 / 0.2 / 0.4 | **96.09** | **81.25** | **78.12 / 84.98** | **78.12 / 83.67** | **84.38** | **92.96** | **85.15** |
 | Equal weights | 0.25 / 0.25 / 0.25 / 0.25 | 94.53 | 76.56 | 73.44 / 79.94 | 75.78 / 81.86 | 82.81 | 90.62 | 82.29 (−2.86) |
-| Checker-heavy | 0.4 / 0.2 / 0.2 / 0.2 | 95.31 | 78.13 | 75.00 / 82.71 | 75.78 / 82.63 | 82.81 | 90.62 | 82.94 (−2.21) |
+| Checker‑heavy | 0.4 / 0.2 / 0.2 / 0.2 | 95.31 | 78.13 | 75.00 / 82.71 | 75.78 / 82.63 | 82.81 | 90.62 | 82.94 (−2.21) |
 
 ### Part B: Reward Weight Distribution — OOD
 
-| Setting | Weights (checker/format/operator/control) | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA | AIME 2025 | APPS | DS-1000 | OOD Avg. |
+| Setting | Weights (checker/format/operator/control) | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA | AIME 2025 | APPS | DS‑1000 | OOD Avg. |
 |---|---|---|---|---|---|---|---|---|
 | **Default** | 0.2 / 0.2 / 0.2 / 0.4 | **79.69 / 84.11** | **54.69 / 62.56** | **88.67** | **26.67** | **49.21** | **58.59** | **59.59** |
 | Equal weights | 0.25 / 0.25 / 0.25 / 0.25 | 74.22 / 83.23 | 50.78 / 59.82 | 85.93 | 26.67 | 44.53 | 51.36 | 55.58 (−4.01) |
-| Checker-heavy | 0.4 / 0.2 / 0.2 / 0.2 | 71.88 / 80.60 | 53.91 / 62.29 | 84.38 | 23.33 | 42.97 | 50.00 | 54.41 (−5.18) |
+| Checker‑heavy | 0.4 / 0.2 / 0.2 / 0.2 | 71.88 / 80.60 | 53.91 / 62.29 | 84.38 | 23.33 | 42.97 | 50.00 | 54.41 (−5.18) |
 
 **Key Observations**:
 - All variants show gradual degradation rather than catastrophic failure, confirming robustness to hyperparameter choices.
@@ -209,7 +209,7 @@ All variants keep total weight sum = 1.0, ensuring $R_{\text{diversity}}$ can al
 | MBPP | Code (IID) | Easy | TBD | TBD | TBD | TBD |
 | HumanEval | Code (IID) | Easy | TBD | TBD | TBD | TBD |
 | APPS | Code (OOD) | Hard | TBD | TBD | TBD | TBD |
-| DS-1000 | Code (OOD) | Hard | TBD | TBD | TBD | TBD |
+| DS‑1000 | Code (OOD) | Hard | TBD | TBD | TBD | TBD |
 
 **Correlation Analysis**:
 - Spearman ρ (difficulty vs. avg. turns): TBD (p=TBD)
@@ -240,7 +240,7 @@ All variants keep total weight sum = 1.0, ensuring $R_{\text{diversity}}$ can al
 
 ### OOD Benchmarks
 
-| Setting | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA (Acc.) | AIME 2025 (Acc.) | APPS (Pass@1) | DS-1000 (Pass@1) |
+| Setting | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA (Acc.) | AIME 2025 (Acc.) | APPS (Pass@1) | DS‑1000 (Pass@1) |
 |---|---|---|---|---|---|---|
 | **Original (12 operators)** | **79.69 / 84.11** | **54.69 / 62.56** | **88.67** | **26.67** | **49.21** | **58.59** |
 | + 3 distractors (15 total) | TBD | TBD | TBD | TBD | TBD | TBD |
@@ -268,7 +268,7 @@ All variants keep total weight sum = 1.0, ensuring $R_{\text{diversity}}$ can al
 
 ### OOD Benchmarks (new)
 
-| Method | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA (Acc.) | AIME 2025 (Acc.) | APPS (Pass@1) | DS-1000 (Pass@1) |
+| Method | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA (Acc.) | AIME 2025 (Acc.) | APPS (Pass@1) | DS‑1000 (Pass@1) |
 |---|---|---|---|---|---|---|
 | GRPO | TBD | TBD | TBD | TBD | TBD | TBD |
 | DAPO | TBD | TBD | TBD | TBD | TBD | TBD |
