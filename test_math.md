@@ -1,39 +1,31 @@
-# Math Rendering Test v3
+# Math Test v4 - Braces vs No Braces
 
-## Inline tests (exact formulas from rebuttals)
-
-### A: Big-O with braces around subscript
-yielding $O(\lvert\mathcal{A}_{\text{type}}\rvert + \lvert\mathcal{O}\rvert)$ complexity
-
-### B: Big-O without braces (as in ALL file)
+### T1: Big-O NO braces, single formula
 yielding $O(\lvert\mathcal{A}_\text{type}\rvert + \lvert\mathcal{O}\rvert)$ complexity
 
-### C: Two Big-O formulas on same line (as in ALL file)
-yielding $O(\lvert\mathcal{A}_{\text{type}}\rvert + \lvert\mathcal{O}\rvert)$ vs. $O(\lvert\mathcal{A}_{\text{type}}\rvert \times \lvert\mathcal{O}\rvert)$ complexity
+### T2: Big-O WITH braces, single formula
+yielding $O(\lvert\mathcal{A}_{\text{type}}\rvert + \lvert\mathcal{O}\rvert)$ complexity
 
-### D: mask formula
-A binary mask $\text{mask}_t \in \{0,1\}$ is applied
+### T3: Two Big-O NO braces, same line
+yielding $O(\lvert\mathcal{A}_\text{type}\rvert + \lvert\mathcal{O}\rvert)$ vs. $O(\lvert\mathcal{A}_\text{type}\rvert \times \lvert\mathcal{O}\rvert)$ complexity
 
-### E: mask with lbrace
-A binary mask $\text{mask}_t \in \lbrace 0,1\rbrace$ is applied
+### T4: Variance NO braces
+Proposition 6c proves $\text{Var}_\text{mask} < \text{Var}_\text{no-mask}$
 
-### F: Indicator
-The indicator $\mathbb{I}\{R_{\text{diversity}}=1.0\}$ creates rewards
-
-### G: R(tau)
-feasible trajectories get $R(\tau) \geq 0$ and non-feasible get $R(\tau) < 0$
-
-### H: mu sigma
-Advantages use $(\mu_{\text{src}}, \sigma_{\text{src}})$ partitioned by source
-
-### I: Variance
+### T5: Variance WITH braces
 Proposition 6c proves $\text{Var}_{\text{mask}} < \text{Var}_{\text{no-mask}}$
 
-### J: R_control
-giving higher weight to $R_{\text{control}}$ to reflect importance
+### T6: Two Big-O NO braces, on SEPARATE lines
+yielding $O(\lvert\mathcal{A}_\text{type}\rvert + \lvert\mathcal{O}\rvert)$
+vs. $O(\lvert\mathcal{A}_\text{type}\rvert \times \lvert\mathcal{O}\rvert)$ complexity
 
-### K: Simple inline
-This is $x^2$ and $R_{control}$ and $\tau$
+### T7: Two Big-O with pipe, NO braces
+yielding $O(|\mathcal{A}_\text{type}| + |\mathcal{O}|)$ vs. $O(|\mathcal{A}_\text{type}| \times |\mathcal{O}|)$ complexity
 
-### L: Big-O with simple pipe
-yielding $O(|\mathcal{A}_{\text{type}}| + |\mathcal{O}|)$ vs. $O(|\mathcal{A}_{\text{type}}| \times |\mathcal{O}|)$
+### T8: mask with braces around t
+A binary mask $\text{mask}_{t} \in \{0,1\}$ is applied
+
+### T9: All Bq9t formulas on separate paragraphs
+The indicator $\mathbb{I}\{R_\text{diversity}=1.0\}$ creates sign-separated rewards — feasible trajectories get $R(\tau) \geq 0$, non-feasible get $R(\tau) < 0$.
+
+Source-partitioned advantage uses $(\mu_\text{src}, \sigma_\text{src})$ partitioned by data source.
