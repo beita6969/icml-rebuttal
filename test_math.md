@@ -1,55 +1,39 @@
-# Math Rendering Test
+# Math Rendering Test v3
 
-## Test 1: Dollar sign inline (no space after $)
-Result: $x^2+y^2=z^2$
+## Inline tests (exact formulas from rebuttals)
 
-## Test 2: Dollar sign inline (with space)
-Result: $ x^2+y^2=z^2 $
+### A: Big-O with braces around subscript
+yielding $O(\lvert\mathcal{A}_{\text{type}}\rvert + \lvert\mathcal{O}\rvert)$ complexity
 
-## Test 3: Double dollar display
-$$x^2+y^2=z^2$$
+### B: Big-O without braces (as in ALL file)
+yielding $O(\lvert\mathcal{A}_\text{type}\rvert + \lvert\mathcal{O}\rvert)$ complexity
 
-## Test 4: Math code block
-```math
-x^2 + y^2 = z^2
-```
+### C: Two Big-O formulas on same line (as in ALL file)
+yielding $O(\lvert\mathcal{A}_{\text{type}}\rvert + \lvert\mathcal{O}\rvert)$ vs. $O(\lvert\mathcal{A}_{\text{type}}\rvert \times \lvert\mathcal{O}\rvert)$ complexity
 
-## Test 5: Math code block - Big O
-```math
-O(\lvert\mathcal{A}_{\text{type}}\rvert + \lvert\mathcal{O}\rvert)
-```
+### D: mask formula
+A binary mask $\text{mask}_t \in \{0,1\}$ is applied
 
-## Test 6: Math code block - mask
-```math
-\text{mask}_t \in \{0,1\}
-```
+### E: mask with lbrace
+A binary mask $\text{mask}_t \in \lbrace 0,1\rbrace$ is applied
 
-## Test 7: Math code block - indicator
-```math
-\mathbb{I}\{R_{\text{diversity}}=1.0\}
-```
+### F: Indicator
+The indicator $\mathbb{I}\{R_{\text{diversity}}=1.0\}$ creates rewards
 
-## Test 8: Math code block - reward
-```math
-R(\tau) \geq 0
-```
+### G: R(tau)
+feasible trajectories get $R(\tau) \geq 0$ and non-feasible get $R(\tau) < 0$
 
-## Test 9: Math code block - stats
-```math
-(\mu_{\text{src}}, \sigma_{\text{src}})
-```
+### H: mu sigma
+Advantages use $(\mu_{\text{src}}, \sigma_{\text{src}})$ partitioned by source
 
-## Test 10: Inline with backslash-paren
-Inline: \(x^2 + y^2 = z^2\)
+### I: Variance
+Proposition 6c proves $\text{Var}_{\text{mask}} < \text{Var}_{\text{no-mask}}$
 
-## Test 11: Inline dollar no space strict
-Word$x^2$word and also mid $y$ sentence.
+### J: R_control
+giving higher weight to $R_{\text{control}}$ to reflect importance
 
-## Test 12: Double dollar on own lines
+### K: Simple inline
+This is $x^2$ and $R_{control}$ and $\tau$
 
-$$
-O(\lvert\mathcal{A}_{\text{type}}\rvert + \lvert\mathcal{O}\rvert)
-$$
-
-## Test 13: HTML approach
-<img src="https://latex.codecogs.com/svg.image?O(|\mathcal{A}_{\text{type}}|+|\mathcal{O}|)" />
+### L: Big-O with simple pipe
+yielding $O(|\mathcal{A}_{\text{type}}| + |\mathcal{O}|)$ vs. $O(|\mathcal{A}_{\text{type}}| \times |\mathcal{O}|)$
