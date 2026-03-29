@@ -65,7 +65,11 @@ FlowSteer is the only method that *dynamically constructs a workflow DAG with pe
 
 **W2: Plug-and-play is not "pure engineering"**
 
-The plug-and-play is enabled by a *factored action space* (Section 4.1) decoupling action types from operators, yielding $O(\lvert\mathcal{A}_\text{type}\rvert + \lvert\mathcal{O}\rvert)$ vs. $O(\lvert\mathcal{A}_\text{type}\rvert \times \lvert\mathcal{O}\rvert)$ complexity (Proposition 1). Flow-Director selects operators via semantic descriptions (Table 7), not indices, enabling zero-shot transfer.
+The plug-and-play is enabled by a *factored action space* (Section 4.1) decoupling action types from operators (Proposition 1):
+
+$$O(|\mathcal{A}_{\text{type}}| + |\mathcal{O}|) \quad\text{vs.}\quad O(|\mathcal{A}_{\text{type}}| \times |\mathcal{O}|)$$
+
+Flow-Director selects operators via semantic descriptions (Table 7), not indices, enabling zero-shot transfer.
 
 New experiments across 12 benchmarks: *Removal* (**Table R2**, 4 core operators): IID XX.XX / OOD XX.XX, surpassing most baselines. *Substitution* (**Table R3**): IID XX.XX (−X.X) / OOD XX.XX (−X.X). *Addition* (**Table R4**, unseen WebSearch, Summarizer, Debugger): IID XX.XX (+X.X) / OOD XX.XX (+X.X). No prior work has demonstrated operator-level transfer.
 
@@ -73,7 +77,9 @@ New experiments across 12 benchmarks: *Removal* (**Table R2**, 4 core operators)
 
 We appreciate the opportunity to clarify the distinction. CWRPO differs from GRPO in three ways *at the objective level*, not merely in the reward:
 
-(1) **Token-level mask in the objective** (Eq. 10): A binary mask $\text{mask}_t \in \lbrace 0,1\rbrace$ is applied *inside the policy gradient*, computing loss only on policy-generated tokens and zeroing out environment feedback tokens. GRPO computes loss on all tokens. This changes *which tokens receive gradient signal* — not the reward. Proposition 6c proves unbiasedness (Eq. 62) and variance reduction: $\text{Var}_\text{mask} < \text{Var}_\text{no-mask}$ (Eqs. 63–64).
+(1) **Token-level mask in the objective** (Eq. 10): A binary mask $\text{mask}_t \in \lbrace 0,1\rbrace$ is applied *inside the policy gradient*, computing loss only on policy-generated tokens and zeroing out environment feedback tokens. GRPO computes loss on all tokens. This changes *which tokens receive gradient signal* — not the reward. Proposition 6c proves unbiasedness (Eq. 62) and variance reduction (Eqs. 63–64):
+
+$$\text{Var}_{\text{mask}} < \text{Var}_{\text{no-mask}}$$
 
 (2) **Conditional release with sign separation** (Eq. 14): The indicator $\mathbb{I}\lbrace R_\text{diversity}=1.0\rbrace$ creates structurally guaranteed sign-separated rewards — feasible trajectories get $R(\tau) \geq 0$ (Eq. 48), non-feasible get $R(\tau) < 0$ (Eq. 46). This enables provable two-stage optimization (Proposition 6b, Eqs. 49–54): the policy first learns structural validity, then optimizes answer quality. GRPO has no such curriculum structure; it directly optimizes a single reward signal.
 

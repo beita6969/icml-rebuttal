@@ -63,7 +63,11 @@ FlowSteer 是唯一*动态构建工作流 DAG 并逐任务定制提示词*的方
 
 **W2：即插即用并非“纯工程”**
 
-即插即用由*分解式动作空间*（Section 4.1）实现，将动作类型与算子解耦，复杂度为 $O(\lvert\mathcal{A}_\text{type}\rvert + \lvert\mathcal{O}\rvert)$ 而非 $O(\lvert\mathcal{A}_\text{type}\rvert \times \lvert\mathcal{O}\rvert)$ （命题 1）。Flow-Director 通过语义描述（Table 7）选择算子而非索引，实现零样本迁移。
+即插即用由*分解式动作空间*（Section 4.1）实现，将动作类型与算子解耦（命题 1）：
+
+$$O(|\mathcal{A}_{\text{type}}| + |\mathcal{O}|) \quad\text{vs.}\quad O(|\mathcal{A}_{\text{type}}| \times |\mathcal{O}|)$$
+
+Flow-Director 通过语义描述（Table 7）选择算子而非索引，实现零样本迁移。
 
 12 个 benchmark 上的新实验：*删除*（**Table R2**，仅 4 个核心算子）：IID XX.XX / OOD XX.XX，超过大多数基线。*替换*（**Table R3**）：IID XX.XX (−X.X) / OOD XX.XX (−X.X)。*新增*（**Table R4**，未见过的 WebSearch, Summarizer, Debugger）：IID XX.XX (+X.X) / OOD XX.XX (+X.X)。此前无工作展示过算子级迁移。
 
@@ -71,7 +75,9 @@ FlowSteer 是唯一*动态构建工作流 DAG 并逐任务定制提示词*的方
 
 我们感谢这个机会来澄清区别。CWRPO 在*目标函数层面*与 GRPO 有三处不同，而非仅在奖励：
 
-(1) **目标函数中的 Token 级掩码**（公式 10）：二值掩码 $\text{mask}_t \in \lbrace 0,1\rbrace$ 应用于*策略梯度内部*，仅对策略生成的 token 计算损失，环境反馈 token 梯度归零。GRPO 对所有 token 计算损失。这改变了*哪些 token 接收梯度信号*——而非奖励。命题 6c 证明了无偏性（公式 62）和方差缩减：$\text{Var}_\text{mask} < \text{Var}_\text{no-mask}$ （公式 63–64）。
+(1) **目标函数中的 Token 级掩码**（公式 10）：二值掩码 $\text{mask}_t \in \lbrace 0,1\rbrace$ 应用于*策略梯度内部*，仅对策略生成的 token 计算损失，环境反馈 token 梯度归零。GRPO 对所有 token 计算损失。这改变了*哪些 token 接收梯度信号*——而非奖励。命题 6c 证明了无偏性（公式 62）和方差缩减（公式 63–64）：
+
+$$\text{Var}_{\text{mask}} < \text{Var}_{\text{no-mask}}$$
 
 (2) **条件释放与符号分离**（公式 14）：指示函数 $\mathbb{I}\lbrace R_\text{diversity}=1.0\rbrace$ 创建结构保证的符号分离奖励——可行轨迹 $R(\tau) \geq 0$ （公式 48），不可行轨迹 $R(\tau) < 0$ （公式 46）。这实现了可证明的两阶段优化（命题 6b，公式 49–54）：策略先学习结构有效性，再优化答案质量。GRPO 无此课程结构，直接优化单一奖励信号。
 
