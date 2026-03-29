@@ -4,7 +4,7 @@ We thank the reviewer. We address each concern with existing theory and new expe
 
 **W1/Q1: Theoretical grounding and reward stability** (New: Tables R1, R5 | Paper: Prop. 3)
 
-**Proposition 3 (Appendix B.2)** provides formal analysis with four sub-proofs: (a) **sign separation** (Eqs. 45–48); (b) **two-stage optimization** (Eqs. 49–56) — conditional release shifts mass toward feasibility; (c) **bounded updates** (Eqs. 57–60); (d) **token mask variance reduction** (Eqs. 61–66) — unbiased with $`\text{Var}(\text{mask}) < \text{Var}(\text{no-mask})`$.
+**Proposition 3 (Appendix B.2)** provides formal analysis with four sub-proofs: (a) **sign separation** (Eqs. 45–48); (b) **two-stage optimization** (Eqs. 49–56) — conditional release shifts mass toward feasibility; (c) **bounded updates** (Eqs. 57–60); (d) **token mask variance reduction** (Eqs. 61–66) — unbiased with $\\text{Var}(\\text{mask}) < \\text{Var}(\\text{no-mask})$.
 
 Empirically, new **Table R1** ablation isolates each component:
 
@@ -39,7 +39,7 @@ FlowSteer uniquely *dynamically edits the workflow graph* (Definition 1) with pe
 
 **W4/Q4: Scalability and computational cost** (New: Table R6 | Paper: Appendix C, G)
 
-**FlowSteer's multi-turn overhead is manageable.** Appendix C shows $`O(NT)`$ training and $`O(T)`$ inference complexity, mitigated by vectorized rollout (Appendix G): 32-way concurrent trajectories, batched API calls, cached states, and early-finish skipping.
+**FlowSteer's multi-turn overhead is manageable.** Appendix C shows $O(NT)$ training and $O(T)$ inference complexity, mitigated by vectorized rollout (Appendix G): 32-way concurrent trajectories, batched API calls, cached states, and early-finish skipping.
 
 FlowSteer trains once and deploys zero-shot to 6 backends (Figure 4) without per-backend tuning. New **Table R6** confirms task-proportional inference: GSM8K averages 8.3 turns / \$0.0012 vs. AIME 12.4 turns / \$0.0019 (Spearman ρ=0.65, p=0.021).
 

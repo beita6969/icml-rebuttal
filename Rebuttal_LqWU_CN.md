@@ -21,7 +21,7 @@
 
 *删除*（新**表 R2**）：测试时移除算子组，不重训。每组移除导致针对性退化：−Verify/Test 对代码影响最大（APPS 49.21→35.16，DS-1000 58.59→38.28），−Review/Revise 对 QA 影响最大（HotPotQA EM −7.03，SQuAD v2 EM −4.68），−ScEnsemble/Aggregate 对高难度问题影响显著（AIME 26.67→20.00）。这证实了 7 个认知原语的满射覆盖（Proposition 4，附录 B.1）。即使最小 4 算子配置（低于理论最小值 5）仍达 IID 76.95 / OOD 50.30——渐进退化而非灾难性崩溃，证明编排策略的鲁棒性。
 
-*替换与新增*（新**表 R3–R4**）：用未见替代实现替换（Programmer→Jupyter Kernel，Custom→Generate with Skills），几乎无损，均值 IID 85.42（+0.3）/ OOD 59.69（+0.1）。新增训练时未见的算子在目标任务上选择性提升——+Search：TriviaQA/NQ +5.47/+8.59 EM；+Debugger：APPS/DS-1000 +2.35/+3.91——非目标零退化。两项能力源于分解式动作空间（Proposition 1）：$`O(\lvert\mathcal{A}_{\text{type}}\rvert + \lvert\mathcal{O}\rvert)`$ 复杂度，语义选择算子（Table 7）实现零样本迁移。
+*替换与新增*（新**表 R3–R4**）：用未见替代实现替换（Programmer→Jupyter Kernel，Custom→Generate with Skills），几乎无损，均值 IID 85.42（+0.3）/ OOD 59.69（+0.1）。新增训练时未见的算子在目标任务上选择性提升——+Search：TriviaQA/NQ +5.47/+8.59 EM；+Debugger：APPS/DS-1000 +2.35/+3.91——非目标零退化。两项能力源于分解式动作空间（Proposition 1）：$O(\\lvert\\mathcal{A}\_{\\text{type}}\\rvert + \\lvert\\mathcal{O}\\rvert)$ 复杂度，语义选择算子（Table 7）实现零样本迁移。
 
 **W3/Q3：结构先验敏感性**（新增：Tables R5, R6 | 论文：Prop. 4, Figure 5）
 
