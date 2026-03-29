@@ -18,11 +18,7 @@ FlowSteer 是唯一能*通过多轮交互动态编辑 workflow graph（Definitio
 
 **W2：Plug-and-play 并非"纯工程"**
 
-Plug-and-play 能力由*分解式动作空间*（Section 4.1）支撑，将动作类型与算子解耦（Proposition 1）：
-
-$$O(\lvert\mathcal{A}_{\text{type}}\rvert + \lvert\mathcal{O}\rvert) \quad\text{vs.}\quad O(\lvert\mathcal{A}_{\text{type}}\rvert \times \lvert\mathcal{O}\rvert)$$
-
-这是有理论基础的*设计层*贡献，而非简单的工程封装。Flow-Director 通过语义描述（Table 7）而非硬编码索引选择算子。
+Plug-and-play 能力由*分解式动作空间*（Section 4.1）支撑，将动作类型与算子解耦（Proposition 1），复杂度为 $`O(\lvert\mathcal{A}_{\text{type}}\rvert + \lvert\mathcal{O}\rvert)`$ vs. 朴素的 $`O(\lvert\mathcal{A}_{\text{type}}\rvert \times \lvert\mathcal{O}\rvert)`$。这是有理论基础的*设计层*贡献，而非简单的工程封装。Flow-Director 通过语义描述（Table 7）而非硬编码索引选择算子。
 
 新迁移实验验证（**表 R2–R4**）：*删除*（仅 4 核心算子）：IID 76.95 / OOD 50.30，渐进退化。*替换*（Programmer→Jupyter，Custom→Generate with Skills）：均值 IID 85.42（+0.3）/ OOD 59.69（+0.1），几乎无损。*新增*（未见过的 Search、Calculator、Debugger）：目标任务选择性提升（QA +5.5–8.6 EM，代码 +2.4–3.9），非目标任务零退化。据我们所知，此前无工作展示过这一层级的算子迁移能力。
 
@@ -30,11 +26,11 @@ $$O(\lvert\mathcal{A}_{\text{type}}\rvert + \lvert\mathcal{O}\rvert) \quad\text{
 
 我们恳请澄清：CWRPO 与 GRPO 在*目标函数层面*存在三个差异，而非仅仅是 reward 不同：
 
-**(1) 目标函数中的 Token 级掩码**（公式 10）：二值掩码 $\text{mask}_t \in \{0,1\}$ 作用于*策略梯度内部*，仅对策略生成的 token 计算损失。GRPO 对包括环境反馈在内的所有 token 计算损失。这改变了*哪些 token 接收梯度信号*。Proposition 6c 证明此掩码产生无偏估计且方差严格更低（公式 62–64）。消融验证：移除后 MATH −13.28，MathQA −10.55。
+**(1) 目标函数中的 Token 级掩码**（公式 10）：二值掩码 $`\text{mask}_t \in \{0,1\}`$ 作用于*策略梯度内部*，仅对策略生成的 token 计算损失。GRPO 对包括环境反馈在内的所有 token 计算损失。这改变了*哪些 token 接收梯度信号*。Proposition 6c 证明此掩码产生无偏估计且方差严格更低（公式 62–64）。消融验证：移除后 MATH −13.28，MathQA −10.55。
 
-**(2) 带符号分离的条件释放**（公式 14）：指示函数 $\mathbb{I}\{R_{diversity}=1.0\}$ 创建符号分离的奖励——可行轨迹 $R(\tau) \geq 0$（公式 48），不可行轨迹 $R(\tau) < 0$（公式 46）。这实现了可证明的两阶段优化（Proposition 6b）：先学结构，再优化答案。GRPO 无此课程机制。消融：移除后 TriviaQA EM −9.38，NQ EM −7.81。
+**(2) 带符号分离的条件释放**（公式 14）：指示函数 $`\mathbb{I}\{R_{diversity}=1.0\}`$ 创建符号分离的奖励——可行轨迹 $`R(\tau) \geq 0`$（公式 48），不可行轨迹 $`R(\tau) < 0`$（公式 46）。这实现了可证明的两阶段优化（Proposition 6b）：先学结构，再优化答案。GRPO 无此课程机制。消融：移除后 TriviaQA EM −9.38，NQ EM −7.81。
 
-**(3) 按数据源分区的优势归一化**：优势值使用按数据源分区的统计量 $(\mu_{src}, \sigma_{src})$，防止多任务训练中的跨任务优势坍缩。标准 GRPO 使用全局批统计量。
+**(3) 按数据源分区的优势归一化**：优势值使用按数据源分区的统计量 $`(\mu_{src}, \sigma_{src})`$，防止多任务训练中的跨任务优势坍缺。标准 GRPO 使用全局批统计量。
 
 Table 6 证实：CWRPO 在全部 6 个 IID 基准上优于 GRPO（GSM8K 96.09 vs. 92.97，MATH 81.25 vs. 73.43，HotPotQA 78.12 vs. 72.66）。
 
