@@ -15,7 +15,7 @@ Empirically, our new **Table R1** ablation isolates each component:
 | w/o Diversity Reward | 80.08 (−5.08) | 50.30 (−9.28) |
 | w/o Cond. Release | 80.86 (−4.30) | 52.85 (−6.74) |
 
-Regarding reward sensitivity, **Table R5** varies hyperparameters while keeping all mechanisms active: equal weighting (0.25×4) achieves IID 79.56 / OOD 48.72 vs. default IID 85.15 / OOD 59.59; min_ops=4 yields IID 80.60 / OOD 47.54 — gradual degradation rather than catastrophic failure, confirming robustness to reward shaping choices.
+Regarding reward sensitivity, **Table R5** varies hyperparameters across 5 configurations while keeping all mechanisms active: equal weighting (0.25×4) achieves IID 82.29 / OOD 55.58; checker-heavy (0.4/0.2/0.2/0.2) IID 82.94 / OOD 54.41; min_ops ∈ {3, 4, 7} yields IID 80.73–81.51 / OOD 52.29–53.92 — all show gradual degradation (IID −2.21 to −4.42, OOD −4.01 to −7.30) vs. default IID 85.15 / OOD 59.59, confirming robustness to reward shaping choices.
 
 **W2/Q2: Ablation granularity — disentangling contributions**
 

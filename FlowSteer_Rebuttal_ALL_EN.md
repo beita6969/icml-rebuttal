@@ -41,7 +41,7 @@ Thank you for this question. The structural constraints are not heuristic but de
 
 (2) *Adaptive complexity* (**Table R6**, reporting avg. turns, tokens, operator count per dataset): Per-dataset statistics show task-proportional workflows: GSM8K (grade-school math) averages X.X turns / X.XK tokens vs. AIME 2025 (competition math) X.X turns / X.XK tokens; SQuAD v2 (extractive QA) X.X turns vs. HotPotQA (multi-hop) X.X turns. Spearman ρ=X.XX (p<0.05) between dataset difficulty and workflow complexity confirms statistically significant adaptation. Figure 5(a-b) further shows FlowSteer (Full) achieves lower consumption than all ablation variants (Table 5).
 
-(3) *Sensitivity* (**Table R5**): We vary the minimum operator threshold (5→4→3→7) and reward weight distribution (equal 0.25×4 vs. default 0.2/0.2/0.2/0.4), keeping $R_\text{diversity}$ sum at 1.0 so conditional release functions normally in all variants (unlike Table R1 which removes entire mechanisms). Results show gradual degradation (−X.X to −X.X avg.) rather than catastrophic failure; equal weighting performs comparably to default, and increasing min_ops to 7 yields diminishing returns — consistent with 5 being the theoretical minimum.
+(3) *Sensitivity* (**Table R5**): We vary the minimum operator threshold (5→3/4/7) and reward weight distribution (equal 0.25×4, checker-heavy 0.4/0.2/0.2/0.2 vs. default 0.2/0.2/0.2/0.4), keeping $R_\text{diversity}$ sum at 1.0 so conditional release functions normally in all variants (unlike Table R1 which removes entire mechanisms). Results show gradual degradation (IID −2.21 to −4.42, OOD −4.01 to −7.30) rather than catastrophic failure; equal weighting (IID 82.29 / OOD 55.58) and checker-heavy (IID 82.94 / OOD 54.41) perform comparably to default (IID 85.15 / OOD 59.59), and increasing min_ops to 7 yields diminishing returns — consistent with 5 being the theoretical minimum.
 
 **Limitations**: We will expand on privacy (public benchmarks; code sandboxed, 30s timeout) and misuse mitigation (operator constraints + canvas verification; production needs additional safeguards).
 
@@ -148,7 +148,7 @@ We provide a detailed cost comparison across all baselines:
 
 We thank the reviewer for catching this inconsistency. We clarify: the actual training uses weights 0.2/0.2/0.2/0.4 (as in Table 11), which gives higher weight to $R_\text{control}$ reflecting the importance of control structures. Appendix C.1's statement of equal 0.25 weights was from an earlier draft and will be corrected in revision.
 
-Importantly, our sensitivity analysis (**Table R5 Part B**) shows this distinction has minimal practical impact: equal weighting (0.25×4) achieves IID XX.XX / OOD XX.XX vs. default (0.2/0.2/0.2/0.4) IID XX.XX / OOD XX.XX — a difference of only X.X points. All weight configurations with sum=1.0 maintain the conditional release mechanism (Eq. 14) and achieve comparable performance, confirming the method is robust to precise weight tuning.
+Importantly, our sensitivity analysis (**Table R5 Part B**) shows this distinction has minimal practical impact: equal weighting (0.25×4) achieves IID 82.29 / OOD 55.58; checker-heavy (0.4/0.2/0.2/0.2) achieves IID 82.94 / OOD 54.41 — vs. default (0.2/0.2/0.2/0.4) IID 85.15 / OOD 59.59, a difference of only 2.2–2.9 IID points. All weight configurations with sum=1.0 maintain the conditional release mechanism (Eq. 14) and achieve comparable performance, confirming the method is robust to precise weight tuning.
 
 ---
 
@@ -160,7 +160,7 @@ We thank the reviewer for the positive assessment and detailed feedback. Below w
 
 We provide four formal guarantees in Appendix B (pp. 14–20): (1) *Sign separation* (Proposition 6a, Eqs. 43–48): Non-compliant $\tau\in\mathcal{F}^c$ always receive $R(\tau)\in[-1,0)$, feasible $\tau\in\mathcal{F}$ receive $R(\tau)\geq 0$, eliminating reward-shaping ambiguity. After advantage normalization (Eq. 51), feasible/non-feasible trajectories are strictly separable (Eq. 52). (2) *Two-stage curriculum* (Proposition 6b, Eqs. 49–54): The sign gap makes feasibility probability $p_\theta$ monotonically increase (Eq. 54) — structural constraints first, then answer quality. Not a heuristic schedule. (3) *Bounded updates* (Eq. 58): Clipping + KL bound $\lVert\theta_{k+1}-\theta_k\rVert$, ensuring smooth convergence. (4) *Token mask variance reduction* (Proposition 6c, Eqs. 62–64): Masking environment tokens yields unbiased estimates with provably lower variance, stabilizing training.
 
-*New*: **Table R5** varies reward weights (0.25×4 vs. 0.2/0.2/0.2/0.4) and min operator threshold (3→7). All variants show gradual change (−X.X to −X.X) not instability, confirming robustness.
+*New*: **Table R5** varies reward weights (equal 0.25×4, checker-heavy 0.4/0.2/0.2/0.2 vs. default 0.2/0.2/0.2/0.4) and min operator threshold (3→7). All 5 variants show gradual change (IID −2.21 to −4.42, OOD −4.01 to −7.30) not instability, confirming robustness.
 
 **W2/Q2: Ablation — isolating multi-turn vs. reward design vs. optimization**
 

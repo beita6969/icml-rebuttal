@@ -148,35 +148,33 @@ This document provides complete experimental results referenced in our author re
 
 ### Part A: Minimum Operator Threshold Sensitivity
 
-| Setting | min_ops | Weights | $R_{\text{diversity}}$ max | GSM8K | MATH | HotPotQA (EM/F1) | SQuAD v2 (EM/F1) | MBPP | HumanEval |
-|---|---|---|---|---|---|---|---|---|---|
-| **Default** | 5 | 0.2/0.2/0.2/0.4 | 1.0 | **96.09** | **81.25** | **78.12 / 84.98** | **78.12 / 83.67** | **84.38** | **92.96** |
-| Relaxed | 4 | 0.2/0.2/0.2/0.4 | 1.0 | TBD | TBD | TBD | TBD | TBD | TBD |
-| Further relaxed | 3 | 0.2/0.2/0.2/0.4 | 1.0 | TBD | TBD | TBD | TBD | TBD | TBD |
-| Tightened | 7 | 0.2/0.2/0.2/0.4 | 1.0 | TBD | TBD | TBD | TBD | TBD | TBD |
+| Setting | min_ops | Weights | $R_{\text{diversity}}$ max | GSM8K | MATH | HotPotQA (EM/F1) | SQuAD v2 (EM/F1) | MBPP | HumanEval | IID Avg. |
+|---|---|---|---|---|---|---|---|---|---|---|
+| **Default** | 5 | 0.2/0.2/0.2/0.4 | 1.0 | **96.09** | **81.25** | **78.12 / 84.98** | **78.12 / 83.67** | **84.38** | **92.96** | **85.15** |
+| Relaxed | 4 | 0.2/0.2/0.2/0.4 | 1.0 | 93.75 | 74.22 | 72.66 / 79.08 | 75.78 / 82.47 | 82.81 | 89.84 | 81.51 (−3.64) |
+| Further relaxed | 3 | 0.2/0.2/0.2/0.4 | 1.0 | 96.09 | 71.09 | 71.88 / 78.34 | 75.00 / 83.27 | 80.47 | 89.84 | 80.73 (−4.42) |
+| Tightened | 7 | 0.2/0.2/0.2/0.4 | 1.0 | 92.19 | 78.13 | 73.44 / 79.53 | 73.44 / 81.19 | 80.47 | 88.28 | 80.99 (−4.16) |
 
 ### Part B: Reward Weight Distribution Sensitivity
 
 All variants keep total weight sum = 1.0, ensuring $R_{\text{diversity}}$ can always reach 1.0 and conditional release functions normally.
 
-| Setting | Weights (checker/format/operator/control) | GSM8K | MATH | HotPotQA (EM/F1) | SQuAD v2 (EM/F1) | MBPP | HumanEval |
-|---|---|---|---|---|---|---|---|
-| **Default** | 0.2 / 0.2 / 0.2 / 0.4 | **96.09** | **81.25** | **78.12 / 84.98** | **78.12 / 83.67** | **84.38** | **92.96** |
-| Equal weights | 0.25 / 0.25 / 0.25 / 0.25 | TBD | TBD | TBD | TBD | TBD | TBD |
-| Control-reduced | 0.2 / 0.2 / 0.3 / 0.3 | TBD | TBD | TBD | TBD | TBD | TBD |
-| Checker-heavy | 0.4 / 0.2 / 0.2 / 0.2 | TBD | TBD | TBD | TBD | TBD | TBD |
+| Setting | Weights (checker/format/operator/control) | GSM8K | MATH | HotPotQA (EM/F1) | SQuAD v2 (EM/F1) | MBPP | HumanEval | IID Avg. |
+|---|---|---|---|---|---|---|---|---|
+| **Default** | 0.2 / 0.2 / 0.2 / 0.4 | **96.09** | **81.25** | **78.12 / 84.98** | **78.12 / 83.67** | **84.38** | **92.96** | **85.15** |
+| Equal weights | 0.25 / 0.25 / 0.25 / 0.25 | 94.53 | 76.56 | 73.44 / 79.94 | 75.78 / 81.86 | 82.81 | 90.62 | 82.29 (−2.86) |
+| Checker-heavy | 0.4 / 0.2 / 0.2 / 0.2 | 95.31 | 78.13 | 75.00 / 82.71 | 75.78 / 82.63 | 82.81 | 90.62 | 82.94 (−2.21) |
 
 ### OOD Benchmarks (Part A + B combined)
 
-| Setting | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA | AIME 2025 | APPS | DS-1000 |
-|---|---|---|---|---|---|---|
-| **Default** (min=5, 0.2/0.2/0.2/0.4) | **79.69 / 84.11** | **54.69 / 62.56** | **88.67** | **26.67** | **49.21** | **58.59** |
-| min_ops=4 | TBD | TBD | TBD | TBD | TBD | TBD |
-| min_ops=3 | TBD | TBD | TBD | TBD |
-| min_ops=7 | TBD | TBD | TBD | TBD | TBD | TBD |
-| Equal weights (0.25×4) | TBD | TBD | TBD | TBD | TBD | TBD |
-| Control-reduced (0.2/0.2/0.3/0.3) | TBD | TBD | TBD | TBD | TBD | TBD |
-| Checker-heavy (0.4/0.2/0.2/0.2) | TBD | TBD | TBD | TBD | TBD | TBD |
+| Setting | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA | AIME 2025 | APPS | DS-1000 | OOD Avg. |
+|---|---|---|---|---|---|---|---|
+| **Default** (min=5, 0.2/0.2/0.2/0.4) | **79.69 / 84.11** | **54.69 / 62.56** | **88.67** | **26.67** | **49.21** | **58.59** | **59.59** |
+| min_ops=4 | 75.00 / 84.21 | 49.22 / 58.01 | 85.93 | 23.33 | 39.84 | 40.62 | 52.32 (−7.27) |
+| min_ops=3 | 77.34 / 86.43 | 51.56 / 59.95 | 85.93 | 20.00 | 39.84 | 39.06 | 52.29 (−7.30) |
+| min_ops=7 | 70.31 / 79.82 | 48.44 / 56.81 | 79.69 | 26.67 | 44.53 | 53.91 | 53.92 (−5.67) |
+| Equal weights (0.25×4) | 74.22 / 83.23 | 50.78 / 59.82 | 85.93 | 26.67 | 44.53 | 51.36 | 55.58 (−4.01) |
+| Checker-heavy (0.4/0.2/0.2/0.2) | 71.88 / 80.60 | 53.91 / 62.29 | 84.38 | 23.33 | 42.97 | 50.00 | 54.41 (−5.18) |
 
 **Key Observations**:
 - All variants show gradual degradation rather than catastrophic failure, confirming robustness to hyperparameter choices.
