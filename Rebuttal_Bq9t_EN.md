@@ -20,7 +20,7 @@ FlowSteer is the only method that *dynamically edits the workflow graph (Definit
 
 The plug-and-play capability is enabled by a *factored action space* (Section 4.1) that decouples action types from operators (Proposition 1):
 
-$$O(|\mathcal{A}_{\text{type}}| + |\mathcal{O}|) \quad\text{vs. the naive}\quad O(|\mathcal{A}_{\text{type}}| \times |\mathcal{O}|)$$
+$$O(\lvert\mathcal{A}_{\text{type}}\rvert + \lvert\mathcal{O}\rvert) \quad\text{vs. the naive}\quad O(\lvert\mathcal{A}_{\text{type}}\rvert \times \lvert\mathcal{O}\rvert)$$
 
 This is a *design-level* contribution with theoretical grounding, not merely an engineering wrapper. Flow-Director selects operators via semantic descriptions (Table 7), not hard-coded indices.
 

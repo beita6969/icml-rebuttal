@@ -20,7 +20,7 @@ FlowSteer 是唯一能*通过多轮交互动态编辑 workflow graph（Definitio
 
 Plug-and-play 能力由*分解式动作空间*（Section 4.1）支撑，将动作类型与算子解耦（Proposition 1）：
 
-$$O(|\mathcal{A}_{\text{type}}| + |\mathcal{O}|) \quad\text{vs.}\quad O(|\mathcal{A}_{\text{type}}| \times |\mathcal{O}|)$$
+$$O(\lvert\mathcal{A}_{\text{type}}\rvert + \lvert\mathcal{O}\rvert) \quad\text{vs.}\quad O(\lvert\mathcal{A}_{\text{type}}\rvert \times \lvert\mathcal{O}\rvert)$$
 
 这是有理论基础的*设计层*贡献，而非简单的工程封装。Flow-Director 通过语义描述（Table 7）而非硬编码索引选择算子。
 

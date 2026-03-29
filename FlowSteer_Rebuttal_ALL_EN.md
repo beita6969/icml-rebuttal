@@ -67,7 +67,7 @@ FlowSteer is the only method that *dynamically constructs a workflow DAG with pe
 
 The plug-and-play is enabled by a *factored action space* (Section 4.1) decoupling action types from operators (Proposition 1):
 
-$$O(|\mathcal{A}_{\text{type}}| + |\mathcal{O}|) \quad\text{vs.}\quad O(|\mathcal{A}_{\text{type}}| \times |\mathcal{O}|)$$
+$$O(\lvert\mathcal{A}_{\text{type}}\rvert + \lvert\mathcal{O}\rvert) \quad\text{vs.}\quad O(\lvert\mathcal{A}_{\text{type}}\rvert \times \lvert\mathcal{O}\rvert)$$
 
 Flow-Director selects operators via semantic descriptions (Table 7), not indices, enabling zero-shot transfer.
 

@@ -6,7 +6,7 @@
 
 感谢这个问题，我们希望澄清 FlowSteer 设计中的一个关键区别。FlowSteer 工作在*元层面（meta-level）*：它并非在工具集中搜索要调用的工具，而是通过多轮编辑动作（add/delete/modify/set_prompt/控制结构）构造 workflow graph（Definition 1）。12 个算子是用于 workflow 构建的可组合构件，而非待搜索的工具清单。这与 tool-search 系统存在本质区别——后者在扩展到数百个 API 时会面临搜索空间和歧义消解的挑战。
 
-具体而言，分解式动作空间（Section 4.1，Proposition 1）将动作类型与算子解耦，复杂度为 $O(|\mathcal{A}_\text{type}| + |\mathcal{O}|)$——新增算子仅带来线性增长。Flow-Director 通过语义描述（Table 7）而非索引选择算子，因此功能重叠由策略对算子语义的理解来消解，而非穷举搜索。
+具体而言，分解式动作空间（Section 4.1，Proposition 1）将动作类型与算子解耦，复杂度为 $O(\lvert\mathcal{A}_\text{type}\rvert + \lvert\mathcal{O}\rvert)$——新增算子仅带来线性增长。Flow-Director 通过语义描述（Table 7）而非索引选择算子，因此功能重叠由策略对算子语义的理解来消解，而非穷举搜索。
 
 迁移实验（**表 R2–R4**）提供了实证支持：移除算子导致针对性退化（−Verify/Test：APPS −14.05，DS-1000 −20.31；−ScEnsemble/Aggregate：AIME −6.67），验证各组的独特作用；用未见实现替换后性能几乎无损（均值 IID +0.3 / OOD +0.1）；新增全新算子则选择性提升目标任务（+Search：TriviaQA/NQ +5.47/+8.59 EM；+Debugger：APPS/DS-1000 +2.35/+3.91），非目标任务零退化。
 

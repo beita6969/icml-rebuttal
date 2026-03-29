@@ -65,7 +65,7 @@ FlowSteer 是唯一*动态构建工作流 DAG 并逐任务定制提示词*的方
 
 即插即用由*分解式动作空间*（Section 4.1）实现，将动作类型与算子解耦（命题 1）：
 
-$$O(|\mathcal{A}_{\text{type}}| + |\mathcal{O}|) \quad\text{vs.}\quad O(|\mathcal{A}_{\text{type}}| \times |\mathcal{O}|)$$
+$$O(\lvert\mathcal{A}_{\text{type}}\rvert + \lvert\mathcal{O}\rvert) \quad\text{vs.}\quad O(\lvert\mathcal{A}_{\text{type}}\rvert \times \lvert\mathcal{O}\rvert)$$
 
 Flow-Director 通过语义描述（Table 7）选择算子而非索引，实现零样本迁移。
 
