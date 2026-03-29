@@ -12,10 +12,10 @@ We agree that Table 6 compares algorithms but does not isolate CWRPO's internal 
 
 | Variant | IID Avg. | OOD Avg.⁴ |
 |---|---|---|
-| CWRPO&amp;nbsp;(Full) | 85.15 | 68.06 |
-| w/o&amp;nbsp;Diversity&amp;nbsp;Reward | 79.69 (−5.47) | 61.13 (−6.93) |
-| w/o&amp;nbsp;Token&amp;nbsp;Masking | 79.82 (−5.34) | 61.52 (−6.54) |
-| w/o&amp;nbsp;Conditional&amp;nbsp;Release | 80.60 (−4.55) | 60.74 (−7.32) |
+| CWRPO (Full) | 85.15 | 68.06 |
+| w/o Diversity Reward | 79.69 (−5.47) | 61.13 (−6.93) |
+| w/o Token Masking | 79.82 (−5.34) | 61.52 (−6.54) |
+| w/o Conditional Release | 80.60 (−4.55) | 60.74 (−7.32) |
 
 ⁴ OOD Avg. over 4 benchmarks (TriviaQA, NQ, MathQA, APPS); AIME 2025 and DS-1000 under re-evaluation.
 
@@ -87,10 +87,10 @@ We have completed this ablation, removing each CWRPO component independently und
 
 | Variant | IID Avg. | OOD Avg.⁴ |
 |---|---|---|
-| CWRPO&amp;nbsp;(Full) | 85.15 | 68.06 |
-| w/o&amp;nbsp;Diversity&amp;nbsp;Reward | 79.69 (−5.47) | 61.13 (−6.93) |
-| w/o&amp;nbsp;Token&amp;nbsp;Masking | 79.82 (−5.34) | 61.52 (−6.54) |
-| w/o&amp;nbsp;Conditional&amp;nbsp;Release | 80.60 (−4.55) | 60.74 (−7.32) |
+| CWRPO (Full) | 85.15 | 68.06 |
+| w/o Diversity Reward | 79.69 (−5.47) | 61.13 (−6.93) |
+| w/o Token Masking | 79.82 (−5.34) | 61.52 (−6.54) |
+| w/o Conditional Release | 80.60 (−4.55) | 60.74 (−7.32) |
 
 ⁴ OOD Avg. over 4 benchmarks (TriviaQA, NQ, MathQA, APPS); AIME 2025 and DS-1000 under re-evaluation.
 

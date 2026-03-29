@@ -8,10 +8,10 @@ We have completed this ablation across all 12 benchmarks, removing each componen
 
 | Variant | IID Avg. | Δ | OOD Avg. | Δ |
 |---|---|---|---|---|
-| CWRPO&amp;nbsp;(Full) | 85.15 | — | 59.59 | — |
-| w/o&amp;nbsp;Token&amp;nbsp;Masking | 79.82 | −5.34 | 52.06 | −7.52 |
-| w/o&amp;nbsp;Diversity&amp;nbsp;Reward | 80.08 | −5.08 | 50.30 | −9.28 |
-| w/o&amp;nbsp;Cond.&amp;nbsp;Release | 80.86 | −4.30 | 52.85 | −6.74 |
+| CWRPO (Full) | 85.15 | — | 59.59 | — |
+| w/o Token Masking | 79.82 | −5.34 | 52.06 | −7.52 |
+| w/o Diversity Reward | 80.08 | −5.08 | 50.30 | −9.28 |
+| w/o Cond. Release | 80.86 | −4.30 | 52.85 | −6.74 |
 
 Each component exhibits a distinct failure mode: **(1) Token Masking** causes the largest IID drop, concentrated on math — MATH 81.25→67.97 (−13.28), MathQA 88.67→78.12 (−10.55), consistent with the variance reduction proof in Proposition 6c (Eqs. 62–64). **(2) Diversity Reward** causes the largest OOD drop (−9.28), with AIME 26.67→16.67 (−10.00), DS-1000 58.59→46.09 (−12.50), APPS 49.21→37.50 (−11.71), confirming structural scaffolding prevents shortcut convergence on unseen distributions (Proposition 3). **(3) Conditional Release** uniquely impacts open-domain QA — TriviaQA EM −9.38, NQ EM −7.81, validating the two-stage curriculum that suppresses premature termination (Proposition 6b, Eqs. 49–54). With Table 5 (framework) and Table 6 (algorithm), this forms a three-layer ablation hierarchy.
 

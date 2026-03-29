@@ -17,19 +17,19 @@ This document provides complete experimental results referenced in our author re
 
 | Setting | GSM8K (Acc.) | MATH (Acc.) | HotPotQA (EM/F1) | SQuAD v2 (EM/F1) | MBPP (Pass@1) | HumanEval (Pass@1) |
 |---|---|---|---|---|---|---|
-| **CWRPO&amp;nbsp;(Full)** | **96.09** | **81.25** | **78.12 / 84.98** | **78.12 / 83.67** | **84.38** | **92.96** |
-| w/o&amp;nbsp;Conditional&amp;nbsp;Release | 91.41 | 72.66 | 72.66 / 79.91 | 75.00 / 82.54 | 82.03 | 89.84 |
-| w/o&amp;nbsp;Diversity&amp;nbsp;Reward | 94.53 | 67.97 | 69.53 / 77.32 | 75.00 / 82.88 | 82.81 | 88.28 |
-| w/o&amp;nbsp;Token&amp;nbsp;Masking | 93.75 | 67.97 | 70.31 / 76.92 | 75.78 / 83.04 | 81.25 | 89.84 |
+| **CWRPO (Full)** | **96.09** | **81.25** | **78.12 / 84.98** | **78.12 / 83.67** | **84.38** | **92.96** |
+| w/o Conditional Release | 91.41 | 72.66 | 72.66 / 79.91 | 75.00 / 82.54 | 82.03 | 89.84 |
+| w/o Diversity Reward | 94.53 | 67.97 | 69.53 / 77.32 | 75.00 / 82.88 | 82.81 | 88.28 |
+| w/o Token Masking | 93.75 | 67.97 | 70.31 / 76.92 | 75.78 / 83.04 | 81.25 | 89.84 |
 
 ### OOD Benchmarks
 
 | Setting | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA (Acc.) | APPS (Pass@1) | AIME 2025 (Acc.)‡ | DS-1000 (Pass@1)‡ |
 |---|---|---|---|---|---|---|
-| **CWRPO&amp;nbsp;(Full)** | **79.69 / 84.11** | **54.69 / 62.56** | **88.67** | **49.21** | ‡ | ‡ |
-| w/o&amp;nbsp;Conditional&amp;nbsp;Release | 70.31 / 79.43 | 46.88 / 55.36 | 83.59 | 42.19 | ‡ | ‡ |
-| w/o&amp;nbsp;Diversity&amp;nbsp;Reward | 71.09 / 80.21 | 51.56 / 59.64 | 78.91 | 42.97 | ‡ | ‡ |
-| w/o&amp;nbsp;Token&amp;nbsp;Masking | 71.88 / 80.60 | 53.12 / 61.61 | 78.12 | 42.97 | ‡ | ‡ |
+| **CWRPO (Full)** | **79.69 / 84.11** | **54.69 / 62.56** | **88.67** | **49.21** | ‡ | ‡ |
+| w/o Conditional Release | 70.31 / 79.43 | 46.88 / 55.36 | 83.59 | 42.19 | ‡ | ‡ |
+| w/o Diversity Reward | 71.09 / 80.21 | 51.56 / 59.64 | 78.91 | 42.97 | ‡ | ‡ |
+| w/o Token Masking | 71.88 / 80.60 | 53.12 / 61.61 | 78.12 | 42.97 | ‡ | ‡ |
 
 ‡ AIME 2025 and DS-1000 evaluation pipeline under investigation; results will be updated. OOD averages below are computed over the 4 stable benchmarks (TriviaQA, NQ, MathQA, APPS).
 
@@ -52,9 +52,9 @@ This document provides complete experimental results referenced in our author re
 | Setting | GSM8K (Acc.) | MATH (Acc.) | HotPotQA (EM/F1) | SQuAD v2 (EM/F1) | MBPP (Pass@1) | HumanEval (Pass@1) |
 |---|---|---|---|---|---|---|
 | **Full (12 operators)** | **96.09** | **81.25** | **78.12 / 84.98** | **78.12 / 83.67** | **84.38** | **92.96** |
-| −Review,&amp;nbsp;Revise (no revision capability) | TBD | TBD | TBD | TBD | TBD | TBD |
-| −ScEnsemble,&amp;nbsp;Aggregate (no ensemble) | TBD | TBD | TBD | TBD | TBD | TBD |
-| −Verify,&amp;nbsp;Test (no verification) | TBD | TBD | TBD | TBD | TBD | TBD |
+| −Review, Revise (no revision capability) | TBD | TBD | TBD | TBD | TBD | TBD |
+| −ScEnsemble, Aggregate (no ensemble) | TBD | TBD | TBD | TBD | TBD | TBD |
+| −Verify, Test (no verification) | TBD | TBD | TBD | TBD | TBD | TBD |
 | Minimal: Plan, Programmer, Custom, Format only | TBD | TBD | TBD | TBD | TBD | TBD |
 
 ### OOD Benchmarks
@@ -62,9 +62,9 @@ This document provides complete experimental results referenced in our author re
 | Setting | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA (Acc.) | AIME 2025 (Acc.) | APPS (Pass@1) | DS-1000 (Pass@1) |
 |---|---|---|---|---|---|---|
 | **Full (12 operators)** | **79.69 / 84.11** | **54.69 / 62.56** | **88.67** | **26.67** | **49.21** | **58.59** |
-| −Review,&amp;nbsp;Revise | TBD | TBD | TBD | TBD | TBD | TBD |
-| −ScEnsemble,&amp;nbsp;Aggregate | TBD | TBD | TBD | TBD | TBD | TBD |
-| −Verify,&amp;nbsp;Test | TBD | TBD | TBD | TBD | TBD | TBD |
+| −Review, Revise | TBD | TBD | TBD | TBD | TBD | TBD |
+| −ScEnsemble, Aggregate | TBD | TBD | TBD | TBD | TBD | TBD |
+| −Verify, Test | TBD | TBD | TBD | TBD | TBD | TBD |
 | Minimal: Plan, Programmer, Custom, Format only | TBD | TBD | TBD | TBD | TBD | TBD |
 
 **Key Observations**:
