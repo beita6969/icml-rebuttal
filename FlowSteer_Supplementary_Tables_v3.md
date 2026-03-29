@@ -9,7 +9,7 @@ All experiments use the same training configuration as the main paper unless oth
 
 ## Table R1: CWRPO Component-Level Ablation
 
-Each variant disables exactly one CWRPO component while keeping all others unchanged, isolating the contribution of conditional release, structural diversity reward, and token masking.
+Each variant disables exactly one CWRPO component while keeping all others unchanged, isolating the contribution of three mechanisms: (1) **Conditional Release** (Eq. 14) — a curriculum-like gating that withholds the answer reward until the diversity constraint is fully satisfied, preventing shortcut behaviors; (2) **Structural Diversity Reward** (Eq. 12) — composed of four sub-rewards (checker, format, operator count, control structure) that jointly encourage reliable workflow skeletons; (3) **Token Masking** (Eq. 10) — restricts gradient computation to policy-generated tokens only, excluding environment feedback tokens, yielding unbiased and lower-variance policy updates. All variants are retrained from scratch with 300 steps on 2×A100 80GB.
 
 ### IID Benchmarks
 
@@ -35,7 +35,7 @@ Metrics: Acc. for math, EM for QA (F1 also reported), Pass@1 for code.
 
 ## Table R2: Operator Transfer — Removal
 
-Operators are removed from the library at inference time without retraining, testing FlowSteer's robustness under reduced operator sets.
+Operators are removed from the library at inference time without retraining, testing FlowSteer's robustness under reduced operator sets. We progressively remove groups of operators sharing a functional role: Review+Revise (quality assurance), ScEnsemble+Aggregate (ensemble reasoning), Verify+Test (correctness checking). "Minimal (4 ops)" retains only Plan, Programmer, Custom, and Format — the minimum viable set for end-to-end workflow construction. Flow-Director must adapt its orchestration policy to compensate for missing capabilities using the remaining operators.
 
 ### IID Benchmarks
 
@@ -63,7 +63,7 @@ Minimal configuration: Plan, Programmer, Custom, Format only.
 
 ## Table R3: Operator Transfer — Substitution
 
-Existing operators are replaced with functionally similar but implementation-different alternatives at test time, without retraining.
+Existing operators are replaced with functionally similar but implementation-different alternatives at test time, without retraining. This tests whether Flow-Director selects operators via semantic understanding (Table 7 descriptions) rather than memorized indices. Substitutions: Programmer (Python executor) → Jupyter Kernel (stateful notebook), Custom (template-based generation) → Generate with Skills (skill-augmented generation), Review (structured critique) → SelfCrit (self-criticism without rubric). Each replacement preserves the operator's functional role but changes internal implementation, API behavior, and output format.
 
 ### IID Benchmarks
 
@@ -87,7 +87,7 @@ Existing operators are replaced with functionally similar but implementation-dif
 
 ## Table R4: Operator Transfer — Addition
 
-Novel operators unseen during training are added to the library at inference time, testing whether Flow-Director can autonomously discover and utilize them.
+Novel operators unseen during training are added to the library at inference time, testing whether Flow-Director can autonomously discover and utilize them via zero-shot transfer. Added operators: +Search (web retrieval for knowledge-intensive QA), +Calculator (symbolic math engine for arithmetic verification), +Debugger (static analysis + runtime tracing for code tasks). Each new operator is registered with a semantic description in Table 7; Flow-Director must decide when and how to invoke it based on task context, without any fine-tuning. This validates the factored action space design (Proposition 1) where new operators incur only linear cost growth.
 
 ### IID Benchmarks
 
@@ -111,7 +111,7 @@ Novel operators unseen during training are added to the library at inference tim
 
 ## Table R5: Structural Constraint Sensitivity Analysis
 
-Hyperparameters (minimum operator threshold, reward weight distribution) are varied while keeping all mechanisms active and $R_{\text{diversity}}$ able to reach 1.0. Each variant is retrained from scratch. Unlike Table R1 which removes entire mechanisms, Table R5 tests sensitivity to specific parameter choices.
+Hyperparameters of the structural diversity reward are varied while keeping all three CWRPO mechanisms active and $R_{\text{diversity}}$ able to reach 1.0. Each variant is retrained from scratch with 300 steps. Unlike Table R1 which removes entire mechanisms, Table R5 tests sensitivity to specific parameter choices within the reward shaping. **Part A** varies the minimum operator count threshold (min_ops): the default value 5 requires workflows to use at least 5 distinct operators; relaxing to 4 or 3 lowers the structural bar, while tightening to 7 raises it. **Part B** varies the four sub-reward weights (checker / format / operator / control): the default 0.2/0.2/0.2/0.4 emphasizes control structures; "equal weights" assigns 0.25 each; "checker-heavy" shifts emphasis to verification (0.4/0.2/0.2/0.2).
 
 ### Part A: Minimum Operator Threshold
 
@@ -147,7 +147,7 @@ Hyperparameters (minimum operator threshold, reward weight distribution) are var
 
 ## Table R6: Per-Dataset Workflow Complexity Analysis
 
-Statistics collected during standard inference across all 12 benchmarks, showing that FlowSteer generates task-proportional workflows.
+Statistics collected during standard inference across all 12 benchmarks (6 IID + 6 OOD), showing that FlowSteer generates task-proportional workflows rather than fixed-length pipelines. Metrics include average interaction turns, total tokens consumed (in thousands), number of distinct operators used, operator type diversity, wall-clock time (seconds), backend API calls, and estimated API cost (USD). Harder tasks (e.g., AIME 2025, APPS) exhibit significantly more turns, tokens, and time, while simpler tasks (e.g., TriviaQA, MBPP) use compact workflows. Spearman rank correlations at the bottom quantify the monotonic relationship between task difficulty and workflow complexity.
 
 | Dataset | Category | Avg. Turns | Avg. Tokens (K) | Avg. Ops | Avg. Types | Avg. Time (s) | Avg. API Calls | Avg. Cost ($) |
 |---|---|---|---|---|---|---|---|---|
