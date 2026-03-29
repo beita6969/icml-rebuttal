@@ -1,6 +1,6 @@
 We thank the reviewer for recognizing our problem framing and broad evaluation. We address each concern with new experiments (full tables in https://anonymous.4open.science/r/Supplementary).
 
-**W1/Q1: Component-level ablation of CWRPO** (New: Table R1 | Paper: Tables 5, 6)
+### W1/Q1: Component-level ablation of CWRPO (New: Table R1 | Paper: Tables 5, 6)
 
 We have completed this ablation across all 12 benchmarks, removing each component independently under identical training (new **Table R1**):
 
@@ -13,7 +13,7 @@ We have completed this ablation across all 12 benchmarks, removing each componen
 
 Each component addresses a distinct challenge: **(1) Token Masking** solves multi-turn credit assignment — environment feedback tokens corrupt gradients, destabilizing math most (MATH −13.28, MathQA −10.55). **(2) Diversity Reward** prevents structural mode collapse — the policy converges to shortcut workflows that fail on unseen distributions (largest OOD drop −9.28; AIME −10.00, DS-1000 −12.50, APPS −11.71). **(3) Conditional Release** prevents premature convergence — without curriculum gating, the policy terminates early, degrading open-domain QA (TriviaQA EM −9.38, NQ EM −7.81). The three failure modes are orthogonal (different task categories, non-compensating), confirming CWRPO is a minimal complete design. Together with Table 5 (framework-level) and Table 6 (RL algorithm-level), this establishes a three-layer ablation hierarchy.
 
-**W2/Q2: Operator library transfer** (New: Tables R2–R4 | Paper: Table 7, Prop. 1)
+### W2/Q2: Operator library transfer (New: Tables R2–R4 | Paper: Table 7, Prop. 1)
 
 We conduct three tiers of transfer experiments (new **Tables R2–R4**) to evaluate how FlowSteer's operator library behaves under modification.
 
@@ -21,7 +21,7 @@ We conduct three tiers of transfer experiments (new **Tables R2–R4**) to evalu
 
 *Substitution & Addition* (new **Tables R3–R4**): Replacing operators with unseen alternatives (Programmer→Jupyter Kernel, Custom→Generate with Skills) yields near-lossless avg. IID 85.42 (+0.3) / OOD 59.69 (+0.1). Adding entirely new operators unseen during training shows selective improvement — +Search: TriviaQA/NQ +5.47/+8.59 EM; +Debugger: APPS/DS-1000 +2.35/+3.91 — with zero non-target degradation. Both stem from the factored action space (Proposition 1): $O(\\lvert\\mathcal{A}\_{\\text{type}}\\rvert + \\lvert\\mathcal{O}\\rvert)$ complexity. Flow-Director selects operators via semantic descriptions (Table 7), enabling zero-shot transfer to unseen implementations.
 
-**W3/Q3: Structural prior sensitivity** (New: Tables R5, R6 | Paper: Prop. 4, Figure 5)
+### W3/Q3: Structural prior sensitivity (New: Tables R5, R6 | Paper: Prop. 4, Figure 5)
 
 **The structural constraints are theoretically necessary, not heuristic.** Proposition 4 (Appendix B.1) identifies 7 cognitive primitives any complete workflow must cover: Generation, Verification, Aggregation, Conditional branching, Sequential chaining, Ensemble, and Formatting. We prove via surjective coverage (Eqs. 19–25) that each primitive requires at least one operator, and since certain primitives (e.g., Verification vs. Generation) need functionally distinct implementations, the theoretical minimum is 5 operators.
 
