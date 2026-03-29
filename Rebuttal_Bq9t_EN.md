@@ -18,7 +18,7 @@ FlowSteer is the only method that *dynamically edits the workflow graph (Definit
 
 **W2: Plug-and-play is not "pure engineering"**
 
-The plug-and-play capability is enabled by a *factored action space* (Section 4.1) that decouples action types from operators, yielding $O(\vert\mathcal{A}_{type}\vert+\vert\mathcal{O}\vert)$ vs. the naive $O(\vert\mathcal{A}_{type}\vert \times \vert\mathcal{O}\vert)$ complexity (Proposition 1). This is a *design-level* contribution with theoretical grounding, not merely an engineering wrapper. Flow-Director selects operators via semantic descriptions (Table 7), not hard-coded indices.
+The plug-and-play capability is enabled by a *factored action space* (Section 4.1) that decouples action types from operators, yielding O(|A_type|+|O|) vs. the naive O(|A_type|×|O|) complexity (Proposition 1). This is a *design-level* contribution with theoretical grounding, not merely an engineering wrapper. Flow-Director selects operators via semantic descriptions (Table 7), not hard-coded indices.
 
 We validate this with new transfer experiments (**Tables R2–R4**): *Removal* (4 core operators only): IID 76.95 / OOD 50.30, graceful degradation. *Substitution* (Programmer→Jupyter, Custom→Generate with Skills): avg. IID 85.42 (+0.3) / OOD 59.69 (+0.1), near-lossless. *Addition* (unseen Search, Calculator, Debugger): selective target-task improvement (+5.5–8.6 EM on QA, +2.4–3.9 on code) with zero non-target degradation. No prior work has demonstrated this level of operator-level transfer.
 
