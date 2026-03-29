@@ -1,6 +1,6 @@
 # Reviewer X8tH (Score: 4, Weak Accept)
 
-We thank the reviewer for the positive assessment. We address each concern below, highlighting existing theoretical analysis and supplementing with new experiments (full tables in [Supplementary](LINK)).
+We thank the reviewer for the positive assessment. We address each concern below, highlighting existing theoretical analysis and supplementing with new experiments (full tables in [Supplementary](https://anonymous.4open.science/r/Supplementary)).
 
 **W1/Q1: Theoretical grounding and reward stability**
 

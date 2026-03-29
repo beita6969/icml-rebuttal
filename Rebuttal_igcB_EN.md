@@ -1,6 +1,6 @@
 # Reviewer igcB (Score: 3, Weak Reject)
 
-We thank the reviewer for recognizing the conditional release mechanism, comprehensive evaluation, and plug-and-play design. We address each concern below (full tables in [Supplementary](LINK)).
+We thank the reviewer for recognizing the conditional release mechanism, comprehensive evaluation, and plug-and-play design. We address each concern below (full tables in [Supplementary](https://anonymous.4open.science/r/Supplementary)).
 
 **W1: Operator library scalability with overlapping tools**
 

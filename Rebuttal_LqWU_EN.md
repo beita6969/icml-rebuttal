@@ -1,6 +1,6 @@
 # Reviewer LqWU (Score: 4, Weak Accept)
 
-We thank the reviewer for recognizing our problem framing and broad evaluation. We address each concern with new experiments (full tables in [Anonymous Supplementary](LINK)).
+We thank the reviewer for recognizing our problem framing and broad evaluation. We address each concern with new experiments (full tables in [Anonymous Supplementary](https://anonymous.4open.science/r/Supplementary)).
 
 **W1/Q1: Component-level ablation of CWRPO**
 
