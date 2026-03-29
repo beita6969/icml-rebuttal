@@ -114,7 +114,7 @@ Table 6 证实：CWRPO 在全部 6 个 IID benchmark 上一致优于 GRPO（如 
 
 我们提供所有基线的详细成本对比：
 
-| | 训练 | 多后端部署 | 推理 | IID Avg. |
+| | 训练 | 多后端部署 | 推理 | IID Avg. |
 |---|---|---|---|---|
 | AFlow | ~10K MCTS 迭代/任务，无 RL | 每后端重搜 | 搜索迭代 | 80.16 |
 | Orchestrator | 多目标 RL，~XX GPU-hrs | 每后端重训 | 工具路由 | 82.37 |
@@ -176,7 +176,7 @@ Table 6 证实：CWRPO 在全部 6 个 IID benchmark 上一致优于 GRPO（如 
 
 Appendix C 分析了复杂度：$`O(NT+T)`$ 训练，$`O(T)`$ 推理。值得注意的是，Figure 5(a-b) 显示 FlowSteer (Full) 使用*更少* token/轮次——RL 教会策略何时停止。
 
-| | 训练 | 多后端部署 | IID Avg. |
+| | 训练 | 多后端部署 | IID Avg. |
 |---|---|---|---|
 | AFlow | ~10K MCTS 迭代/任务 | 每后端重搜 | 80.16 |
 | Orchestrator | 多目标 RL | 每后端重训 | 82.37 |

@@ -10,7 +10,7 @@ We sincerely thank the reviewer for the recognition of our problem framing, broa
 
 We agree that Table 6 compares algorithms but does not isolate CWRPO's internal mechanisms. We have now completed this ablation, removing each component independently under identical training across all 12 benchmarks (**Table R1**: Acc. for math, EM/F1 for QA, Pass@1 for code):
 
-| Variant | IID Avg. | OOD Avg.⁴ |
+| Variant | IID Avg. | OOD Avg.⁴ |
 |---|---|---|
 | CWRPO (Full) | 85.15 | 68.06 |
 | w/o Diversity Reward | 79.69 (−5.47) | 61.13 (−6.93) |
@@ -85,7 +85,7 @@ Table 6 confirms: CWRPO consistently outperforms GRPO on all 6 IID benchmarks (e
 
 We have completed this ablation, removing each CWRPO component independently under identical training (**Table R1**, Acc. for math, EM/F1 for QA, Pass@1 for code):
 
-| Variant | IID Avg. | OOD Avg.⁴ |
+| Variant | IID Avg. | OOD Avg.⁴ |
 |---|---|---|
 | CWRPO (Full) | 85.15 | 68.06 |
 | w/o Diversity Reward | 79.69 (−5.47) | 61.13 (−6.93) |
@@ -118,7 +118,7 @@ We acknowledge that scaling to hundreds of APIs remains an open challenge for al
 
 We provide a detailed cost comparison across all baselines:
 
-| | Training | Multi-backend | Inference | IID Avg. |
+| | Training | Multi-backend | Inference | IID Avg. |
 |---|---|---|---|---|
 | AFlow | ~10K MCTS iters/task, no RL | Re-search each | Search iters | 80.16 |
 | Orchestrator | Multi-obj RL, ~XX GPU-hrs | Retrain each | Tool routing | 82.37 |
@@ -180,7 +180,7 @@ Key novelty: FlowSteer *dynamically constructs workflow DAGs with per-task promp
 
 Appendix C analyzes complexity: $`O(NT+T)`$ training, $`O(T)`$ inference. Notably, Figure 5(a-b) shows FlowSteer (Full) uses *fewer* tokens/turns than ablation variants — RL teaches the policy when to stop.
 
-| | Training | Multi-backend | IID Avg. |
+| | Training | Multi-backend | IID Avg. |
 |---|---|---|---|
 | AFlow | ~10K MCTS iters/task | Re-search each | 80.16 |
 | Orchestrator | Multi-obj RL | Retrain each | 82.37 |

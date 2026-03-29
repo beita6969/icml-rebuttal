@@ -38,7 +38,7 @@ Table 6 confirms: CWRPO outperforms GRPO on all 6 IID benchmarks (GSM8K 96.09 vs
 
 We have completed this ablation (**Table R1**), removing each component independently:
 
-| Variant | IID Avg. | Δ | OOD Avg. | Δ |
+| Variant | IID Avg. | Δ | OOD Avg. | Δ |
 |---|---|---|---|---|
 | CWRPO (Full) | 85.15 | — | 59.59 | — |
 | w/o Token Masking | 79.82 | −5.34 | 52.06 | −7.52 |

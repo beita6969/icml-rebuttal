@@ -15,7 +15,7 @@ This document provides complete experimental results referenced in our author re
 
 ### IID Benchmarks
 
-| Setting | GSM8K (Acc.) | MATH (Acc.) | HotPotQA (EM/F1) | SQuAD v2 (EM/F1) | MBPP (Pass@1) | HumanEval (Pass@1) |
+| Setting | GSM8K (Acc.) | MATH (Acc.) | HotPotQA (EM/F1) | SQuAD v2 (EM/F1) | MBPP (Pass@1) | HumanEval (Pass@1) |
 |---|---|---|---|---|---|---|
 | **CWRPO (Full)** | **96.09** | **81.25** | **78.12 / 84.98** | **78.12 / 83.67** | **84.38** | **92.96** |
 | w/o Conditional Release | 91.41 | 72.66 | 72.66 / 79.91 | 75.00 / 82.54 | 82.03 | 89.84 |
@@ -24,7 +24,7 @@ This document provides complete experimental results referenced in our author re
 
 ### OOD Benchmarks
 
-| Setting | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA (Acc.) | APPS (Pass@1) | AIME 2025 (Acc.)‡ | DS-1000 (Pass@1)‡ |
+| Setting | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA (Acc.) | APPS (Pass@1) | AIME 2025 (Acc.)‡ | DS-1000 (Pass@1)‡ |
 |---|---|---|---|---|---|---|
 | **CWRPO (Full)** | **79.69 / 84.11** | **54.69 / 62.56** | **88.67** | **49.21** | ‡ | ‡ |
 | w/o Conditional Release | 70.31 / 79.43 | 46.88 / 55.36 | 83.59 | 42.19 | ‡ | ‡ |
@@ -49,23 +49,23 @@ This document provides complete experimental results referenced in our author re
 
 ### IID Benchmarks
 
-| Setting | GSM8K (Acc.) | MATH (Acc.) | HotPotQA (EM/F1) | SQuAD v2 (EM/F1) | MBPP (Pass@1) | HumanEval (Pass@1) |
+| Setting | GSM8K (Acc.) | MATH (Acc.) | HotPotQA (EM/F1) | SQuAD v2 (EM/F1) | MBPP (Pass@1) | HumanEval (Pass@1) |
 |---|---|---|---|---|---|---|
-| **Full (12 operators)** | **96.09** | **81.25** | **78.12 / 84.98** | **78.12 / 83.67** | **84.38** | **92.96** |
+| **Full (12 operators)** | **96.09** | **81.25** | **78.12 / 84.98** | **78.12 / 83.67** | **84.38** | **92.96** |
 | −Review, Revise (no revision capability) | TBD | TBD | TBD | TBD | TBD | TBD |
 | −ScEnsemble, Aggregate (no ensemble) | TBD | TBD | TBD | TBD | TBD | TBD |
 | −Verify, Test (no verification) | TBD | TBD | TBD | TBD | TBD | TBD |
-| Minimal: Plan, Programmer, Custom, Format only | TBD | TBD | TBD | TBD | TBD | TBD |
+| Minimal: Plan, Programmer, Custom, Format only | TBD | TBD | TBD | TBD | TBD | TBD |
 
 ### OOD Benchmarks
 
-| Setting | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA (Acc.) | AIME 2025 (Acc.) | APPS (Pass@1) | DS-1000 (Pass@1) |
+| Setting | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA (Acc.) | AIME 2025 (Acc.) | APPS (Pass@1) | DS-1000 (Pass@1) |
 |---|---|---|---|---|---|---|
-| **Full (12 operators)** | **79.69 / 84.11** | **54.69 / 62.56** | **88.67** | **26.67** | **49.21** | **58.59** |
+| **Full (12 operators)** | **79.69 / 84.11** | **54.69 / 62.56** | **88.67** | **26.67** | **49.21** | **58.59** |
 | −Review, Revise | TBD | TBD | TBD | TBD | TBD | TBD |
 | −ScEnsemble, Aggregate | TBD | TBD | TBD | TBD | TBD | TBD |
 | −Verify, Test | TBD | TBD | TBD | TBD | TBD | TBD |
-| Minimal: Plan, Programmer, Custom, Format only | TBD | TBD | TBD | TBD | TBD | TBD |
+| Minimal: Plan, Programmer, Custom, Format only | TBD | TBD | TBD | TBD | TBD | TBD |
 
 **Key Observations**:
 - Performance degrades gracefully rather than catastrophically across all removal scenarios.
@@ -83,21 +83,21 @@ This document provides complete experimental results referenced in our author re
 
 ### IID Benchmarks
 
-| Setting | GSM8K (Acc.) | MATH (Acc.) | HotPotQA (EM/F1) | SQuAD v2 (EM/F1) | MBPP (Pass@1) | HumanEval (Pass@1) |
+| Setting | GSM8K (Acc.) | MATH (Acc.) | HotPotQA (EM/F1) | SQuAD v2 (EM/F1) | MBPP (Pass@1) | HumanEval (Pass@1) |
 |---|---|---|---|---|---|---|
-| **Full (original implementations)** | **96.09** | **81.25** | **78.12 / 84.98** | **78.12 / 83.67** | **84.38** | **92.96** |
-| Programmer → Jupyter Kernel | TBD | TBD | TBD | TBD | TBD | TBD |
-| Custom → RAG-based Retriever | TBD | TBD | TBD | TBD | TBD | TBD |
-| Review → LLM-as-Judge | TBD | TBD | TBD | TBD | TBD | TBD |
+| **Full (original implementations)** | **96.09** | **81.25** | **78.12 / 84.98** | **78.12 / 83.67** | **84.38** | **92.96** |
+| Programmer → Jupyter Kernel | TBD | TBD | TBD | TBD | TBD | TBD |
+| Custom → RAG-based Retriever | TBD | TBD | TBD | TBD | TBD | TBD |
+| Review → LLM-as-Judge | TBD | TBD | TBD | TBD | TBD | TBD |
 
 ### OOD Benchmarks
 
-| Setting | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA (Acc.) | AIME 2025 (Acc.) | APPS (Pass@1) | DS-1000 (Pass@1) |
+| Setting | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA (Acc.) | AIME 2025 (Acc.) | APPS (Pass@1) | DS-1000 (Pass@1) |
 |---|---|---|---|---|---|---|
-| **Full (original implementations)** | **79.69 / 84.11** | **54.69 / 62.56** | **88.67** | **26.67** | **49.21** | **58.59** |
-| Programmer → Jupyter Kernel | TBD | TBD | TBD | TBD | TBD | TBD |
-| Custom → RAG-based Retriever | TBD | TBD | TBD | TBD | TBD | TBD |
-| Review → LLM-as-Judge | TBD | TBD | TBD | TBD | TBD | TBD |
+| **Full (original implementations)** | **79.69 / 84.11** | **54.69 / 62.56** | **88.67** | **26.67** | **49.21** | **58.59** |
+| Programmer → Jupyter Kernel | TBD | TBD | TBD | TBD | TBD | TBD |
+| Custom → RAG-based Retriever | TBD | TBD | TBD | TBD | TBD | TBD |
+| Review → LLM-as-Judge | TBD | TBD | TBD | TBD | TBD | TBD |
 
 **Key Observations**:
 - Substitution causes only minor performance shifts, demonstrating that Flow-Director's operator selection is semantic-level rather than index-based.
@@ -114,21 +114,21 @@ This document provides complete experimental results referenced in our author re
 
 ### IID Benchmarks
 
-| Setting | GSM8K (Acc.) | MATH (Acc.) | HotPotQA (EM/F1) | SQuAD v2 (EM/F1) | MBPP (Pass@1) | HumanEval (Pass@1) |
+| Setting | GSM8K (Acc.) | MATH (Acc.) | HotPotQA (EM/F1) | SQuAD v2 (EM/F1) | MBPP (Pass@1) | HumanEval (Pass@1) |
 |---|---|---|---|---|---|---|
-| **Full (12 operators)** | **96.09** | **81.25** | **78.12 / 84.98** | **78.12 / 83.67** | **84.38** | **92.96** |
-| + WebSearch (retrieval for QA) | TBD | TBD | TBD | TBD | TBD | TBD |
-| + Summarizer (intermediate compression) | TBD | TBD | TBD | TBD | TBD | TBD |
-| + Debugger (code debugging feedback) | TBD | TBD | TBD | TBD | TBD | TBD |
+| **Full (12 operators)** | **96.09** | **81.25** | **78.12 / 84.98** | **78.12 / 83.67** | **84.38** | **92.96** |
+| + WebSearch (retrieval for QA) | TBD | TBD | TBD | TBD | TBD | TBD |
+| + Summarizer (intermediate compression) | TBD | TBD | TBD | TBD | TBD | TBD |
+| + Debugger (code debugging feedback) | TBD | TBD | TBD | TBD | TBD | TBD |
 
 ### OOD Benchmarks
 
-| Setting | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA (Acc.) | AIME 2025 (Acc.) | APPS (Pass@1) | DS-1000 (Pass@1) |
+| Setting | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA (Acc.) | AIME 2025 (Acc.) | APPS (Pass@1) | DS-1000 (Pass@1) |
 |---|---|---|---|---|---|---|
-| **Full (12 operators)** | **79.69 / 84.11** | **54.69 / 62.56** | **88.67** | **26.67** | **49.21** | **58.59** |
-| + WebSearch | TBD | TBD | TBD | TBD | TBD | TBD |
-| + Summarizer | TBD | TBD | TBD | TBD | TBD | TBD |
-| + Debugger | TBD | TBD | TBD | TBD | TBD | TBD |
+| **Full (12 operators)** | **79.69 / 84.11** | **54.69 / 62.56** | **88.67** | **26.67** | **49.21** | **58.59** |
+| + WebSearch | TBD | TBD | TBD | TBD | TBD | TBD |
+| + Summarizer | TBD | TBD | TBD | TBD | TBD | TBD |
+| + Debugger | TBD | TBD | TBD | TBD | TBD | TBD |
 
 **Key Observations**:
 - Flow-Director demonstrates emergent ability to incorporate novel operators without retraining.
@@ -148,39 +148,39 @@ This document provides complete experimental results referenced in our author re
 
 ### Part A: Minimum Operator Threshold — IID
 
-| Setting | min_ops | Weights | $R_{\text{diversity}}$ max | GSM8K | MATH | HotPotQA (EM/F1) | SQuAD v2 (EM/F1) | MBPP | HumanEval | IID Avg. |
+| Setting | min_ops | Weights | $R_{\text{diversity}}$ max | GSM8K | MATH | HotPotQA (EM/F1) | SQuAD v2 (EM/F1) | MBPP | HumanEval | IID Avg. |
 |---|---|---|---|---|---|---|---|---|---|---|
 | **Default** | 5 | 0.2/0.2/0.2/0.4 | 1.0 | **96.09** | **81.25** | **78.12 / 84.98** | **78.12 / 83.67** | **84.38** | **92.96** | **85.15** |
 | Relaxed | 4 | 0.2/0.2/0.2/0.4 | 1.0 | 93.75 | 74.22 | 72.66 / 79.08 | 75.78 / 82.47 | 82.81 | 89.84 | 81.51 (−3.64) |
-| Further relaxed | 3 | 0.2/0.2/0.2/0.4 | 1.0 | 96.09 | 71.09 | 71.88 / 78.34 | 75.00 / 83.27 | 80.47 | 89.84 | 80.73 (−4.42) |
+| Further relaxed | 3 | 0.2/0.2/0.2/0.4 | 1.0 | 96.09 | 71.09 | 71.88 / 78.34 | 75.00 / 83.27 | 80.47 | 89.84 | 80.73 (−4.42) |
 | Tightened | 7 | 0.2/0.2/0.2/0.4 | 1.0 | 92.19 | 78.13 | 73.44 / 79.53 | 73.44 / 81.19 | 80.47 | 88.28 | 80.99 (−4.16) |
 
 ### Part A: Minimum Operator Threshold — OOD
 
-| Setting | min_ops | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA | AIME 2025 | APPS | DS-1000 | OOD Avg. |
+| Setting | min_ops | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA | AIME 2025 | APPS | DS-1000 | OOD Avg. |
 |---|---|---|---|---|---|---|---|---|
 | **Default** | 5 | **79.69 / 84.11** | **54.69 / 62.56** | **88.67** | **26.67** | **49.21** | **58.59** | **59.59** |
 | Relaxed | 4 | 75.00 / 84.21 | 49.22 / 58.01 | 85.93 | 23.33 | 39.84 | 40.62 | 52.32 (−7.27) |
-| Further relaxed | 3 | 77.34 / 86.43 | 51.56 / 59.95 | 85.93 | 20.00 | 39.84 | 39.06 | 52.29 (−7.30) |
+| Further relaxed | 3 | 77.34 / 86.43 | 51.56 / 59.95 | 85.93 | 20.00 | 39.84 | 39.06 | 52.29 (−7.30) |
 | Tightened | 7 | 70.31 / 79.82 | 48.44 / 56.81 | 79.69 | 26.67 | 44.53 | 53.91 | 53.92 (−5.67) |
 
 ### Part B: Reward Weight Distribution — IID
 
 All variants keep total weight sum = 1.0, ensuring $R_{\text{diversity}}$ can always reach 1.0 and conditional release functions normally.
 
-| Setting | Weights (checker/format/operator/control) | GSM8K | MATH | HotPotQA (EM/F1) | SQuAD v2 (EM/F1) | MBPP | HumanEval | IID Avg. |
+| Setting | Weights (checker/format/operator/control) | GSM8K | MATH | HotPotQA (EM/F1) | SQuAD v2 (EM/F1) | MBPP | HumanEval | IID Avg. |
 |---|---|---|---|---|---|---|---|---|
-| **Default** | 0.2 / 0.2 / 0.2 / 0.4 | **96.09** | **81.25** | **78.12 / 84.98** | **78.12 / 83.67** | **84.38** | **92.96** | **85.15** |
-| Equal weights | 0.25 / 0.25 / 0.25 / 0.25 | 94.53 | 76.56 | 73.44 / 79.94 | 75.78 / 81.86 | 82.81 | 90.62 | 82.29 (−2.86) |
-| Checker-heavy | 0.4 / 0.2 / 0.2 / 0.2 | 95.31 | 78.13 | 75.00 / 82.71 | 75.78 / 82.63 | 82.81 | 90.62 | 82.94 (−2.21) |
+| **Default** | 0.2 / 0.2 / 0.2 / 0.4 | **96.09** | **81.25** | **78.12 / 84.98** | **78.12 / 83.67** | **84.38** | **92.96** | **85.15** |
+| Equal weights | 0.25 / 0.25 / 0.25 / 0.25 | 94.53 | 76.56 | 73.44 / 79.94 | 75.78 / 81.86 | 82.81 | 90.62 | 82.29 (−2.86) |
+| Checker-heavy | 0.4 / 0.2 / 0.2 / 0.2 | 95.31 | 78.13 | 75.00 / 82.71 | 75.78 / 82.63 | 82.81 | 90.62 | 82.94 (−2.21) |
 
 ### Part B: Reward Weight Distribution — OOD
 
-| Setting | Weights (checker/format/operator/control) | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA | AIME 2025 | APPS | DS-1000 | OOD Avg. |
+| Setting | Weights (checker/format/operator/control) | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA | AIME 2025 | APPS | DS-1000 | OOD Avg. |
 |---|---|---|---|---|---|---|---|---|
-| **Default** | 0.2 / 0.2 / 0.2 / 0.4 | **79.69 / 84.11** | **54.69 / 62.56** | **88.67** | **26.67** | **49.21** | **58.59** | **59.59** |
-| Equal weights | 0.25 / 0.25 / 0.25 / 0.25 | 74.22 / 83.23 | 50.78 / 59.82 | 85.93 | 26.67 | 44.53 | 51.36 | 55.58 (−4.01) |
-| Checker-heavy | 0.4 / 0.2 / 0.2 / 0.2 | 71.88 / 80.60 | 53.91 / 62.29 | 84.38 | 23.33 | 42.97 | 50.00 | 54.41 (−5.18) |
+| **Default** | 0.2 / 0.2 / 0.2 / 0.4 | **79.69 / 84.11** | **54.69 / 62.56** | **88.67** | **26.67** | **49.21** | **58.59** | **59.59** |
+| Equal weights | 0.25 / 0.25 / 0.25 / 0.25 | 74.22 / 83.23 | 50.78 / 59.82 | 85.93 | 26.67 | 44.53 | 51.36 | 55.58 (−4.01) |
+| Checker-heavy | 0.4 / 0.2 / 0.2 / 0.2 | 71.88 / 80.60 | 53.91 / 62.29 | 84.38 | 23.33 | 42.97 | 50.00 | 54.41 (−5.18) |
 
 **Key Observations**:
 - All variants show gradual degradation rather than catastrophic failure, confirming robustness to hyperparameter choices.
@@ -196,20 +196,20 @@ All variants keep total weight sum = 1.0, ensuring $R_{\text{diversity}}$ can al
 
 **Setup**: We report the average number of interaction turns, total tokens consumed, number of operators, and distinct operator types per problem on each of the 12 evaluation benchmarks. All statistics are collected during standard inference (no retraining). We also compute the Spearman rank correlation between dataset difficulty (defined as 1 − Qwen3-8B baseline accuracy from Table 3) and average workflow complexity (turns × operators).
 
-| Dataset | Category | Difficulty | Avg. Turns | Avg. Tokens (K) | Avg. Operators | Avg. Distinct Types |
+| Dataset | Category | Difficulty | Avg. Turns | Avg. Tokens (K) | Avg. Operators | Avg. Distinct Types |
 |---|---|---|---|---|---|---|
-| GSM8K | Math (IID) | Easy | TBD | TBD | TBD | TBD |
-| MATH | Math (IID) | Medium | TBD | TBD | TBD | TBD |
-| MathQA | Math (OOD) | Easy | TBD | TBD | TBD | TBD |
-| AIME 2025 | Math (OOD) | Hard | TBD | TBD | TBD | TBD |
-| SQuAD v2 | QA (IID) | Easy | TBD | TBD | TBD | TBD |
-| HotPotQA | QA (IID) | Medium | TBD | TBD | TBD | TBD |
-| TriviaQA | QA (OOD) | Medium | TBD | TBD | TBD | TBD |
-| NaturalQuestions | QA (OOD) | Hard | TBD | TBD | TBD | TBD |
-| MBPP | Code (IID) | Easy | TBD | TBD | TBD | TBD |
-| HumanEval | Code (IID) | Easy | TBD | TBD | TBD | TBD |
-| APPS | Code (OOD) | Hard | TBD | TBD | TBD | TBD |
-| DS-1000 | Code (OOD) | Hard | TBD | TBD | TBD | TBD |
+| GSM8K | Math (IID) | Easy | TBD | TBD | TBD | TBD |
+| MATH | Math (IID) | Medium | TBD | TBD | TBD | TBD |
+| MathQA | Math (OOD) | Easy | TBD | TBD | TBD | TBD |
+| AIME 2025 | Math (OOD) | Hard | TBD | TBD | TBD | TBD |
+| SQuAD v2 | QA (IID) | Easy | TBD | TBD | TBD | TBD |
+| HotPotQA | QA (IID) | Medium | TBD | TBD | TBD | TBD |
+| TriviaQA | QA (OOD) | Medium | TBD | TBD | TBD | TBD |
+| NaturalQuestions | QA (OOD) | Hard | TBD | TBD | TBD | TBD |
+| MBPP | Code (IID) | Easy | TBD | TBD | TBD | TBD |
+| HumanEval | Code (IID) | Easy | TBD | TBD | TBD | TBD |
+| APPS | Code (OOD) | Hard | TBD | TBD | TBD | TBD |
+| DS-1000 | Code (OOD) | Hard | TBD | TBD | TBD | TBD |
 
 **Correlation Analysis**:
 - Spearman ρ (difficulty vs. avg. turns): TBD (p=TBD)
@@ -231,7 +231,7 @@ All variants keep total weight sum = 1.0, ensuring $R_{\text{diversity}}$ can al
 
 ### IID Benchmarks
 
-| Setting | GSM8K (Acc.) | MATH (Acc.) | HotPotQA (EM/F1) | SQuAD v2 (EM/F1) | MBPP (Pass@1) | HumanEval (Pass@1) |
+| Setting | GSM8K (Acc.) | MATH (Acc.) | HotPotQA (EM/F1) | SQuAD v2 (EM/F1) | MBPP (Pass@1) | HumanEval (Pass@1) |
 |---|---|---|---|---|---|---|
 | **Original (12 operators)** | **96.09** | **81.25** | **78.12 / 84.98** | **78.12 / 83.67** | **84.38** | **92.96** |
 | + 3 distractors (15 total) | TBD | TBD | TBD | TBD | TBD | TBD |
@@ -240,7 +240,7 @@ All variants keep total weight sum = 1.0, ensuring $R_{\text{diversity}}$ can al
 
 ### OOD Benchmarks
 
-| Setting | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA (Acc.) | AIME 2025 (Acc.) | APPS (Pass@1) | DS-1000 (Pass@1) |
+| Setting | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA (Acc.) | AIME 2025 (Acc.) | APPS (Pass@1) | DS-1000 (Pass@1) |
 |---|---|---|---|---|---|---|
 | **Original (12 operators)** | **79.69 / 84.11** | **54.69 / 62.56** | **88.67** | **26.67** | **49.21** | **58.59** |
 | + 3 distractors (15 total) | TBD | TBD | TBD | TBD | TBD | TBD |
@@ -260,7 +260,7 @@ All variants keep total weight sum = 1.0, ensuring $R_{\text{diversity}}$ can al
 
 ### IID Benchmarks (reproduced from Table 6)
 
-| Method | GSM8K (Acc.) | MATH (Acc.) | HotPotQA (EM/F1) | SQuAD v2 (EM/F1) | MBPP (Pass@1) | HumanEval (Pass@1) |
+| Method | GSM8K (Acc.) | MATH (Acc.) | HotPotQA (EM/F1) | SQuAD v2 (EM/F1) | MBPP (Pass@1) | HumanEval (Pass@1) |
 |---|---|---|---|---|---|---|
 | GRPO | 92.97 | 73.43 | 72.66 / TBD | 81.80 / 61.72 | 68.91 / 78.91 | 89.84 |
 | DAPO | 93.75 | 74.22 | 73.44 / TBD | 82.42 / 61.72 | 70.08 / 81.25 | 89.06 |
@@ -268,7 +268,7 @@ All variants keep total weight sum = 1.0, ensuring $R_{\text{diversity}}$ can al
 
 ### OOD Benchmarks (new)
 
-| Method | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA (Acc.) | AIME 2025 (Acc.) | APPS (Pass@1) | DS-1000 (Pass@1) |
+| Method | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA (Acc.) | AIME 2025 (Acc.) | APPS (Pass@1) | DS-1000 (Pass@1) |
 |---|---|---|---|---|---|---|
 | GRPO | TBD | TBD | TBD | TBD | TBD | TBD |
 | DAPO | TBD | TBD | TBD | TBD | TBD | TBD |
@@ -286,10 +286,10 @@ All variants keep total weight sum = 1.0, ensuring $R_{\text{diversity}}$ can al
 
 | Metric | SFT | GRPO | FlowSteer |
 |---|---|---|---|
-| Step Time | 5.35s | 1,257s | 1,004s |
-| Completion Tokens | 0 | 108,315 | 132,146 |
-| Training Tokens | 5,534 | 6,917 | 36,828 |
-| **Total Tokens** | **5,534** | **115,232** | **168,974** |
+| Step Time | 5.35s | 1,257s | 1,004s |
+| Completion Tokens | 0 | 108,315 | 132,146 |
+| Training Tokens | 5,534 | 6,917 | 36,828 |
+| **Total Tokens** | **5,534** | **115,232** | **168,974** |
 
 **Key observations**:
 - FlowSteer's per-step time (1,004s) is **20% faster** than GRPO (1,257s) despite generating more completion tokens (132K vs. 108K), thanks to vectorized rollout with 32-way concurrency, cached states, and early-finish skip (Appendix G).

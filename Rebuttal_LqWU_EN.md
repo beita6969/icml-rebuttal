@@ -6,7 +6,7 @@ We thank the reviewer for recognizing our problem framing and broad evaluation. 
 
 We have completed this ablation across all 12 benchmarks, removing each component independently under identical training (**Table R1**):
 
-| Variant | IID Avg. | Δ | OOD Avg. | Δ |
+| Variant | IID Avg. | Δ | OOD Avg. | Δ |
 |---|---|---|---|---|
 | CWRPO (Full) | 85.15 | — | 59.59 | — |
 | w/o Token Masking | 79.82 | −5.34 | 52.06 | −7.52 |

@@ -8,7 +8,7 @@ We would like to highlight that **Proposition 3 (Appendix B.2)** already provide
 
 Empirically, our new **Table R1** ablation isolates each component:
 
-| Variant | IID Avg. | OOD Avg. |
+| Variant | IID Avg. | OOD Avg. |
 |---|---|---|
 | CWRPO (Full) | 85.15 | 59.59 |
 | w/o Token Masking | 79.82 (−5.34) | 52.06 (−7.52) |
