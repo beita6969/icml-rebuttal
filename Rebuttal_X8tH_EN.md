@@ -8,12 +8,12 @@ We would like to highlight that **Proposition 3 (Appendix B.2)** already provide
 
 Empirically, our new **Table R1** ablation isolates each component:
 
-\vert Variant \vert IID Avg. \vert OOD Avg. \vert
-\vert---\vert---\vert---\vert
-\vert CWRPO (Full) \vert 85.15 \vert 59.59 \vert
-\vert w/o Token Masking \vert 79.82 (−5.34) \vert 52.06 (−7.52) \vert
-\vert w/o Diversity Reward \vert 80.08 (−5.08) \vert 50.30 (−9.28) \vert
-\vert w/o Cond. Release \vert 80.86 (−4.30) \vert 52.85 (−6.74) \vert
+| Variant | IID Avg. | OOD Avg. |
+|---|---|---|
+| CWRPO (Full) | 85.15 | 59.59 |
+| w/o Token Masking | 79.82 (−5.34) | 52.06 (−7.52) |
+| w/o Diversity Reward | 80.08 (−5.08) | 50.30 (−9.28) |
+| w/o Cond. Release | 80.86 (−4.30) | 52.85 (−6.74) |
 
 Regarding reward sensitivity, **Table R5** varies hyperparameters while keeping all mechanisms active: equal weighting (0.25×4) achieves IID 79.56 / OOD 48.72 vs. default IID 85.15 / OOD 59.59; min_ops=4 yields IID 80.60 / OOD 47.54 — gradual degradation rather than catastrophic failure, confirming robustness to reward shaping choices.
 

@@ -8,12 +8,12 @@
 
 实证上，新增 **表 R1** 消融隔离了每个组件：
 
-\vert 变体 \vert IID 均值 \vert OOD 均值 \vert
-\vert---\vert---\vert---\vert
-\vert CWRPO (Full) \vert 85.15 \vert 59.59 \vert
-\vert w/o Token Masking \vert 79.82 (−5.34) \vert 52.06 (−7.52) \vert
-\vert w/o Diversity Reward \vert 80.08 (−5.08) \vert 50.30 (−9.28) \vert
-\vert w/o Cond. Release \vert 80.86 (−4.30) \vert 52.85 (−6.74) \vert
+| 变体 | IID 均值 | OOD 均值 |
+|---|---|---|
+| CWRPO (Full) | 85.15 | 59.59 |
+| w/o Token Masking | 79.82 (−5.34) | 52.06 (−7.52) |
+| w/o Diversity Reward | 80.08 (−5.08) | 50.30 (−9.28) |
+| w/o Cond. Release | 80.86 (−4.30) | 52.85 (−6.74) |
 
 关于奖励敏感性，**表 R5** 在保持所有机制激活的条件下变化超参：等权重（0.25×4）达 IID 79.56 / OOD 48.72，min_ops=4 达 IID 80.60 / OOD 47.54——渐进退化而非灾难性崩溃，证实对奖励塑形选择的鲁棒性。
 
