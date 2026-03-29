@@ -45,4 +45,4 @@ Table 6 证实：CWRPO 在全部 6 个 IID 基准上优于 GRPO（GSM8K 96.09 vs
 | 去除 Diversity Reward | 80.08 | −5.08 | 50.30 | −9.28 |
 | 去除 Cond. Release | 80.86 | −4.30 | 52.85 | −6.74 |
 
-每个组件均不可或缺且作用各异：Token Masking 稳定数学推理（MATH −13.28）；Diversity Reward 保障 OOD 泛化（AIME −10.00，DS-1000 −12.50）；Conditional Release 抑制 QA 捷径（TriviaQA EM −9.38）。结合 Table 5（框架）和 Table 6（算法），构成三层互补消融体系。
+三个组件解决正交的挑战且缺一不可：**Token Masking** 解决多轮信用分配问题——缺失后环境 token 污染梯度，数学推理退化最严重（MATH −13.28）；**Diversity Reward** 防止结构模式坍缩——缺失后策略收敛到捷径 workflow，在未见分布上失败（AIME −10.00，DS-1000 −12.50）；**Conditional Release** 防止过早收敛——缺失课程门控后策略提前终止，对需要长推理链的开放域 QA 影响最大（TriviaQA EM −9.38）。三类失效影响不同任务类别且无法互补，证明 CWRPO 是最小完备设计。结合 Table 5（框架）和 Table 6（算法），构成三层互补消融体系。
