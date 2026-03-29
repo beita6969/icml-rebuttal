@@ -169,3 +169,21 @@
 | 难度 vs. 平均轮数 | 0.65 | 0.021 |
 | 难度 vs. 平均 Token | 0.61 | 0.034 |
 | 难度 vs. 轮数 × 算子数 | 0.61 | 0.035 |
+
+---
+
+## 表 R7：逐步训练成本对比
+
+**目的**：对比 SFT、GRPO 和 FlowSteer（CWRPO）训练的单步计算开销。将多轮 RL 的训练负担置于标准微调和单轮 RL 基线的背景下。所有测量均在 2×A100-80GB 上进行，batch size 和序列长度设置相同。
+
+| 指标 | SFT | GRPO | FlowSteer |
+|---|---|---|---|
+| Step Time | 5.35s | 1,257s | 1,004s |
+| Completion Tokens | 0 | 108,315 | 132,146 |
+| Training Tokens | 5,534 | 6,917 | 36,828 |
+| **Total Tokens** | **5,534** | **115,232** | **168,974** |
+
+**关键观察**：
+- FlowSteer 单步时间（1,004s）比 GRPO（1,257s）**快 20%**，尽管生成了更多 completion tokens（132K vs. 108K），这得益于 32 路并发向量化 rollout、缓存状态和提前完成跳过（Appendix G）。
+- SFT 单步成本低几个数量级，但需要专家标注轨迹且无法探索；FlowSteer 的 RL 训练成本可摊销至 6 个零样本后端（Figure 4）。
+- FlowSteer 每步使用约 5.3× 于 GRPO 的训练 tokens（36,828 vs. 6,917），源于多轮 Canvas 交互，但更丰富的梯度信号带来了显著更高的样本效率（Table 6）。
