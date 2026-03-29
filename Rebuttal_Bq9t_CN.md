@@ -18,7 +18,7 @@ FlowSteer 是唯一能*通过多轮交互动态编辑 workflow graph（Definitio
 
 **W2：Plug-and-play 并非"纯工程"**
 
-Plug-and-play 能力由*分解式动作空间*（Section 4.1）支撑，将动作类型与算子解耦，复杂度为 $O(|\mathcal{A}_{type}|+|\mathcal{O}|)$，而非朴素的 $O(|\mathcal{A}_{type}| \times |\mathcal{O}|)$（Proposition 1）。这是有理论基础的*设计层*贡献，而非简单的工程封装。Flow-Director 通过语义描述（Table 7）而非硬编码索引选择算子。
+Plug-and-play 能力由*分解式动作空间*（Section 4.1）支撑，将动作类型与算子解耦，复杂度为 $O(\vert\mathcal{A}_{type}\vert+\vert\mathcal{O}\vert)$，而非朴素的 $O(\vert\mathcal{A}_{type}\vert \times \vert\mathcal{O}\vert)$（Proposition 1）。这是有理论基础的*设计层*贡献，而非简单的工程封装。Flow-Director 通过语义描述（Table 7）而非硬编码索引选择算子。
 
 新迁移实验验证（**表 R2–R4**）：*删除*（仅 4 核心算子）：IID 76.95 / OOD 50.30，渐进退化。*替换*（Programmer→Jupyter，Custom→Generate with Skills）：均值 IID 85.42（+0.3）/ OOD 59.69（+0.1），几乎无损。*新增*（未见过的 Search、Calculator、Debugger）：目标任务选择性提升（QA +5.5–8.6 EM，代码 +2.4–3.9），非目标任务零退化。据我们所知，此前无工作展示过这一层级的算子迁移能力。
 
