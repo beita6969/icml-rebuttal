@@ -146,7 +146,7 @@ This document provides complete experimental results referenced in our author re
 
 **Setup**: Each variant is retrained from scratch under otherwise identical settings (Qwen3-8B policy, GPT-4o-mini backend, 2×A100 80GB).
 
-### Part A: Minimum Operator Threshold Sensitivity
+### Part A: Minimum Operator Threshold — IID
 
 | Setting | min_ops | Weights | $R_{\text{diversity}}$ max | GSM8K | MATH | HotPotQA (EM/F1) | SQuAD v2 (EM/F1) | MBPP | HumanEval | IID Avg. |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -155,7 +155,16 @@ This document provides complete experimental results referenced in our author re
 | Further relaxed | 3 | 0.2/0.2/0.2/0.4 | 1.0 | 96.09 | 71.09 | 71.88 / 78.34 | 75.00 / 83.27 | 80.47 | 89.84 | 80.73 (−4.42) |
 | Tightened | 7 | 0.2/0.2/0.2/0.4 | 1.0 | 92.19 | 78.13 | 73.44 / 79.53 | 73.44 / 81.19 | 80.47 | 88.28 | 80.99 (−4.16) |
 
-### Part B: Reward Weight Distribution Sensitivity
+### Part A: Minimum Operator Threshold — OOD
+
+| Setting | min_ops | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA | AIME 2025 | APPS | DS-1000 | OOD Avg. |
+|---|---|---|---|---|---|---|---|---|
+| **Default** | 5 | **79.69 / 84.11** | **54.69 / 62.56** | **88.67** | **26.67** | **49.21** | **58.59** | **59.59** |
+| Relaxed | 4 | 75.00 / 84.21 | 49.22 / 58.01 | 85.93 | 23.33 | 39.84 | 40.62 | 52.32 (−7.27) |
+| Further relaxed | 3 | 77.34 / 86.43 | 51.56 / 59.95 | 85.93 | 20.00 | 39.84 | 39.06 | 52.29 (−7.30) |
+| Tightened | 7 | 70.31 / 79.82 | 48.44 / 56.81 | 79.69 | 26.67 | 44.53 | 53.91 | 53.92 (−5.67) |
+
+### Part B: Reward Weight Distribution — IID
 
 All variants keep total weight sum = 1.0, ensuring $R_{\text{diversity}}$ can always reach 1.0 and conditional release functions normally.
 
@@ -165,16 +174,13 @@ All variants keep total weight sum = 1.0, ensuring $R_{\text{diversity}}$ can al
 | Equal weights | 0.25 / 0.25 / 0.25 / 0.25 | 94.53 | 76.56 | 73.44 / 79.94 | 75.78 / 81.86 | 82.81 | 90.62 | 82.29 (−2.86) |
 | Checker-heavy | 0.4 / 0.2 / 0.2 / 0.2 | 95.31 | 78.13 | 75.00 / 82.71 | 75.78 / 82.63 | 82.81 | 90.62 | 82.94 (−2.21) |
 
-### OOD Benchmarks (Part A + B combined)
+### Part B: Reward Weight Distribution — OOD
 
-| Setting | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA | AIME 2025 | APPS | DS-1000 | OOD Avg. |
-|---|---|---|---|---|---|---|---|
-| **Default** (min=5, 0.2/0.2/0.2/0.4) | **79.69 / 84.11** | **54.69 / 62.56** | **88.67** | **26.67** | **49.21** | **58.59** | **59.59** |
-| min_ops=4 | 75.00 / 84.21 | 49.22 / 58.01 | 85.93 | 23.33 | 39.84 | 40.62 | 52.32 (−7.27) |
-| min_ops=3 | 77.34 / 86.43 | 51.56 / 59.95 | 85.93 | 20.00 | 39.84 | 39.06 | 52.29 (−7.30) |
-| min_ops=7 | 70.31 / 79.82 | 48.44 / 56.81 | 79.69 | 26.67 | 44.53 | 53.91 | 53.92 (−5.67) |
-| Equal weights (0.25×4) | 74.22 / 83.23 | 50.78 / 59.82 | 85.93 | 26.67 | 44.53 | 51.36 | 55.58 (−4.01) |
-| Checker-heavy (0.4/0.2/0.2/0.2) | 71.88 / 80.60 | 53.91 / 62.29 | 84.38 | 23.33 | 42.97 | 50.00 | 54.41 (−5.18) |
+| Setting | Weights (checker/format/operator/control) | TriviaQA (EM/F1) | NQ (EM/F1) | MathQA | AIME 2025 | APPS | DS-1000 | OOD Avg. |
+|---|---|---|---|---|---|---|---|---|
+| **Default** | 0.2 / 0.2 / 0.2 / 0.4 | **79.69 / 84.11** | **54.69 / 62.56** | **88.67** | **26.67** | **49.21** | **58.59** | **59.59** |
+| Equal weights | 0.25 / 0.25 / 0.25 / 0.25 | 74.22 / 83.23 | 50.78 / 59.82 | 85.93 | 26.67 | 44.53 | 51.36 | 55.58 (−4.01) |
+| Checker-heavy | 0.4 / 0.2 / 0.2 / 0.2 | 71.88 / 80.60 | 53.91 / 62.29 | 84.38 | 23.33 | 42.97 | 50.00 | 54.41 (−5.18) |
 
 **Key Observations**:
 - All variants show gradual degradation rather than catastrophic failure, confirming robustness to hyperparameter choices.

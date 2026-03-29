@@ -113,7 +113,7 @@ Novel operators unseen during training are added to the library at inference tim
 
 Hyperparameters of the structural diversity reward are varied while keeping all three CWRPO mechanisms active and $R_{\text{diversity}}$ able to reach 1.0. Each variant is retrained from scratch with 300 steps. Unlike Table R1 which removes entire mechanisms, Table R5 tests sensitivity to specific parameter choices within the reward shaping. **Part A** varies the minimum operator count threshold (min_ops): the default value 5 requires workflows to use at least 5 distinct operators; relaxing to 4 or 3 lowers the structural bar, while tightening to 7 raises it. **Part B** varies the four sub-reward weights (checker / format / operator / control): the default 0.2/0.2/0.2/0.4 emphasizes control structures; "equal weights" assigns 0.25 each; "checker-heavy" shifts emphasis to verification (0.4/0.2/0.2/0.2).
 
-### Part A: Minimum Operator Threshold
+### Part A: Minimum Operator Threshold — IID
 
 | Setting | min_ops | GSM8K | MATH | HotPotQA (EM) | SQuAD v2 (EM) | MBPP | HumanEval | <b>IID Avg.</b> |
 |---|---|---|---|---|---|---|---|---|
@@ -122,7 +122,16 @@ Hyperparameters of the structural diversity reward are varied while keeping all 
 | Further relaxed | 3 | 96.09 | 71.09 | 71.88 | 75.00 | 80.47 | 89.84 | <b>80.73</b> (−4.42) |
 | Tightened | 7 | 92.19 | 78.13 | 73.44 | 73.44 | 80.47 | 88.28 | <b>80.99</b> (−4.16) |
 
-### Part B: Reward Weight Distribution
+### Part A: Minimum Operator Threshold — OOD
+
+| Setting | min_ops | TriviaQA (EM) | NQ (EM) | MathQA | AIME 2025 | APPS | DS-1000 | <b>OOD Avg.</b> |
+|---|---|---|---|---|---|---|---|---|
+| <b>Default</b> | <b>5</b> | <b>79.69</b> | <b>54.69</b> | <b>88.67</b> | <b>26.67</b> | <b>49.21</b> | <b>58.59</b> | <b>59.59</b> |
+| Relaxed | 4 | 75.00 | 49.22 | 85.93 | 23.33 | 39.84 | 40.62 | <b>52.32</b> (−7.27) |
+| Further relaxed | 3 | 77.34 | 51.56 | 85.93 | 20.00 | 39.84 | 39.06 | <b>52.29</b> (−7.30) |
+| Tightened | 7 | 70.31 | 48.44 | 79.69 | 26.67 | 44.53 | 53.91 | <b>53.92</b> (−5.67) |
+
+### Part B: Reward Weight Distribution — IID
 
 | Setting | Weights (chk/fmt/op/ctrl) | GSM8K | MATH | HotPotQA (EM) | SQuAD v2 (EM) | MBPP | HumanEval | <b>IID Avg.</b> |
 |---|---|---|---|---|---|---|---|---|
@@ -130,16 +139,13 @@ Hyperparameters of the structural diversity reward are varied while keeping all 
 | Equal weights | 0.25 / 0.25 / 0.25 / 0.25 | 94.53 | 76.56 | 73.44 | 75.78 | 82.81 | 90.62 | <b>82.29</b> (−2.86) |
 | Checker-heavy | 0.4 / 0.2 / 0.2 / 0.2 | 95.31 | 78.13 | 75.00 | 75.78 | 82.81 | 90.62 | <b>82.94</b> (−2.21) |
 
-### OOD Benchmarks (Part A + B)
+### Part B: Reward Weight Distribution — OOD
 
-| Setting | TriviaQA (EM) | NQ (EM) | MathQA | AIME 2025 | APPS | DS-1000 | <b>OOD Avg.</b> |
-|---|---|---|---|---|---|---|---|
-| <b>Default</b> | <b>79.69</b> | <b>54.69</b> | <b>88.67</b> | <b>26.67</b> | <b>49.21</b> | <b>58.59</b> | <b>59.59</b> |
-| min_ops=4 | 75.00 | 49.22 | 85.93 | 23.33 | 39.84 | 40.62 | <b>52.32</b> (−7.27) |
-| min_ops=3 | 77.34 | 51.56 | 85.93 | 20.00 | 39.84 | 39.06 | <b>52.29</b> (−7.30) |
-| min_ops=7 | 70.31 | 48.44 | 79.69 | 26.67 | 44.53 | 53.91 | <b>53.92</b> (−5.67) |
-| Equal weights | 74.22 | 50.78 | 85.93 | 26.67 | 44.53 | 51.36 | <b>55.58</b> (−4.01) |
-| Checker-heavy | 71.88 | 53.91 | 84.38 | 23.33 | 42.97 | 50.00 | <b>54.41</b> (−5.18) |
+| Setting | Weights (chk/fmt/op/ctrl) | TriviaQA (EM) | NQ (EM) | MathQA | AIME 2025 | APPS | DS-1000 | <b>OOD Avg.</b> |
+|---|---|---|---|---|---|---|---|---|
+| <b>Default</b> | <b>0.2 / 0.2 / 0.2 / 0.4</b> | <b>79.69</b> | <b>54.69</b> | <b>88.67</b> | <b>26.67</b> | <b>49.21</b> | <b>58.59</b> | <b>59.59</b> |
+| Equal weights | 0.25 / 0.25 / 0.25 / 0.25 | 74.22 | 50.78 | 85.93 | 26.67 | 44.53 | 51.36 | <b>55.58</b> (−4.01) |
+| Checker-heavy | 0.4 / 0.2 / 0.2 / 0.2 | 71.88 | 53.91 | 84.38 | 23.33 | 42.97 | 50.00 | <b>54.41</b> (−5.18) |
 
 ---
 
