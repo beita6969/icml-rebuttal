@@ -2,7 +2,7 @@
 
 We thank the reviewer for recognizing our problem framing and broad evaluation. We address each concern with new experiments (full tables in [Anonymous Supplementary](https://anonymous.4open.science/r/Supplementary)).
 
-**W1/Q1: Component-level ablation of CWRPO**
+**W1/Q1: Component-level ablation of CWRPO** *(New: Table R1 | Paper: Tables 5, 6)*
 
 We have completed this ablation across all 12 benchmarks, removing each component independently under identical training (**Table R1**):
 
@@ -15,7 +15,7 @@ We have completed this ablation across all 12 benchmarks, removing each componen
 
 The ablation reveals that each component addresses a fundamentally different challenge in multi-turn workflow RL, and none is redundant. **(1) Token Masking** solves the *credit assignment problem* unique to multi-turn Canvas interaction: without it, environment feedback tokens corrupt gradient estimates, destabilizing math reasoning most severely (MATH −13.28, MathQA −10.55) where precise step-by-step computation demands clean gradient signal. **(2) Diversity Reward** prevents *structural mode collapse*: without the scaffold encouraging diverse operator usage, the policy converges to degenerate shortcut workflows that happen to work on training distributions but fail catastrophically on unseen ones — hence the largest OOD drop (−9.28), concentrated on the hardest benchmarks (AIME −10.00, DS-1000 −12.50, APPS −11.71). **(3) Conditional Release** solves the *premature convergence* problem: without the curriculum that withholds answer reward until structural constraints are met, the policy learns to terminate early with superficially correct but structurally degenerate workflows, uniquely degrading open-domain QA where longer retrieval-reasoning chains are needed (TriviaQA EM −9.38, NQ EM −7.81). Crucially, the three failure modes are orthogonal — they affect different task categories and cannot compensate for each other — demonstrating that CWRPO is a minimal complete design. Together with Table 5 (framework-level) and Table 6 (RL algorithm-level), this establishes a three-layer ablation hierarchy from architecture to training objective to individual mechanisms.
 
-**W2/Q2: Operator library transfer**
+**W2/Q2: Operator library transfer** *(New: Tables R2–R4 | Paper: Propositions 1, 4)*
 
 We conduct three tiers of transfer experiments on IID and OOD benchmarks (**Tables R2–R4**), the first systematic operator-level transfer evaluation in this area.
 
@@ -23,7 +23,7 @@ We conduct three tiers of transfer experiments on IID and OOD benchmarks (**Tabl
 
 *Substitution & Addition* (**Tables R3–R4**): Replacing operators with unseen alternatives (Programmer→Jupyter Kernel, Custom→Generate with Skills) yields near-lossless avg. IID 85.42 (+0.3) / OOD 59.69 (+0.1). Adding entirely new operators unseen during training shows selective improvement on target tasks — +Search: TriviaQA/NQ +5.47/+8.59 EM; +Debugger: APPS/DS-1000 +2.35/+3.91 — with zero degradation elsewhere. Both capabilities stem from the factored action space (Proposition 1), yielding $`O(\lvert\mathcal{A}_{\text{type}}\rvert + \lvert\mathcal{O}\rvert)`$ complexity. Flow-Director selects operators via semantic descriptions (Table 7), not indices, enabling zero-shot transfer to unseen implementations.
 
-**W3/Q3: Structural prior sensitivity**
+**W3/Q3: Structural prior sensitivity** *(New: Tables R5, R6 | Paper: Proposition 4, Appendix H)*
 
 **The structural constraints are theoretically necessary, not heuristic.** Proposition 4 (Appendix B.1) identifies 7 cognitive primitives that any complete agentic workflow must cover: Generation (producing candidate outputs), Verification (checking correctness), Aggregation (combining partial results), Conditional branching (task-dependent routing), Sequential chaining (multi-step decomposition), Ensemble (diversity-based selection), and Formatting (output standardization). We prove via surjective coverage (Eqs. 19–25) that every primitive must be realized by at least one operator — and since certain primitives (e.g., Verification vs. Generation) demand functionally distinct implementations, the theoretical minimum is 5 operators.
 
