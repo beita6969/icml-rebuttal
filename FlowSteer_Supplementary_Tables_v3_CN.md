@@ -18,7 +18,7 @@
 | <b>CWRPO（完整）</b> | <b>96.09<sub>±0.2</sub></b> | <b>81.25<sub>±0.5</sub></b> | <b>78.12<sub>±0.5</sub></b> | <b>84.98<sub>±0.8</sub></b> | <b>78.12<sub>±0.2</sub></b> | <b>83.67<sub>±0.3</sub></b> | <b>84.38<sub>±0.6</sub></b> | <b>92.96<sub>±0.5</sub></b> | <b>85.15<sub>±0.7</sub></b> |
 | 去除条件释放 | 91.41<sub>±0.5</sub> | 74.21<sub>±0.7</sub> | 72.66<sub>±0.7</sub> | 79.91<sub>±0.7</sub> | 75.0<sub>±0.6</sub> | 82.54<sub>±0.3</sub> | 82.03<sub>±0.6</sub> | 89.84<sub>±0.2</sub> | <b>80.86<sub>±0.8</sub></b> (−4.30) |
 | 去除多样性奖励 | 94.53<sub>±0.5</sub> | 70.31<sub>±0.8</sub> | 69.53<sub>±0.6</sub> | 77.32<sub>±0.6</sub> | 75.0<sub>±0.3</sub> | 82.88<sub>±0.3</sub> | 82.81<sub>±0.9</sub> | 88.28<sub>±0.8</sub> | <b>80.08<sub>±0.7</sub></b> (−5.08) |
-| 去除 Token 掩码 | 93.75<sub>±0.9</sub> | 67.97<sub>±0.5</sub> | 70.31<sub>±0.2</sub> | 76.92<sub>±0.4</sub> | 75.78<sub>±0.5</sub> | 83.04<sub>±0.3</sub> | 81.25<sub>±0.5</sub> | 89.84<sub>±0.8</sub> | <b>79.82<sub>±0.7</sub></b> (−5.34) |
+| 去除&nbsp;Token&nbsp;掩码 | 93.75<sub>±0.9</sub> | 67.97<sub>±0.5</sub> | 70.31<sub>±0.2</sub> | 76.92<sub>±0.4</sub> | 75.78<sub>±0.5</sub> | 83.04<sub>±0.3</sub> | 81.25<sub>±0.5</sub> | 89.84<sub>±0.8</sub> | <b>79.82<sub>±0.7</sub></b> (−5.34) |
 
 ### OOD 基准
 
@@ -27,7 +27,7 @@
 | <b>CWRPO（完整）</b> | <b>79.69<sub>±0.6</sub></b> | <b>84.11<sub>±0.1</sub></b> | <b>54.69<sub>±0.7</sub></b> | <b>62.56<sub>±0.4</sub></b> | <b>88.67<sub>±0.4</sub></b> | <b>26.67<sub>±0.4</sub></b> | <b>49.21<sub>±0.6</sub></b> | <b>58.59<sub>±0.5</sub></b> | <b>59.59<sub>±0.2</sub></b> |
 | 去除条件释放 | 70.31<sub>±0.5</sub> | 79.43<sub>±0.7</sub> | 46.88<sub>±0.6</sub> | 55.36<sub>±0.5</sub> | 83.59<sub>±0.8</sub> | 23.33<sub>±0.3</sub> | 42.19<sub>±0.4</sub> | 50.78<sub>±0.8</sub> | <b>52.85<sub>±0.5</sub></b> (−6.74) |
 | 去除多样性奖励 | 71.09<sub>±0.5</sub> | 80.21<sub>±0.1</sub> | 51.56<sub>±0.3</sub> | 59.64<sub>±0.2</sub> | 78.91<sub>±0.1</sub> | 16.67<sub>±0.7</sub> | 37.5<sub>±0.8</sub> | 46.09<sub>±0.2</sub> | <b>50.3<sub>±0.6</sub></b> (−9.28) |
-| 去除 Token 掩码 | 71.88<sub>±0.5</sub> | 80.6<sub>±0.5</sub> | 53.12<sub>±0.3</sub> | 61.61<sub>±0.8</sub> | 78.12<sub>±0.6</sub> | 23.33<sub>±0.5</sub> | 39.06<sub>±0.5</sub> | 46.88<sub>±0.8</sub> | <b>52.06<sub>±0.9</sub></b> (−7.52) |
+| 去除&nbsp;Token&nbsp;掩码 | 71.88<sub>±0.5</sub> | 80.6<sub>±0.5</sub> | 53.12<sub>±0.3</sub> | 61.61<sub>±0.8</sub> | 78.12<sub>±0.6</sub> | 23.33<sub>±0.5</sub> | 39.06<sub>±0.5</sub> | 46.88<sub>±0.8</sub> | <b>52.06<sub>±0.9</sub></b> (−7.52) |
 
 指标：数学用 Acc.，QA 用 EM（同时报告 F1），代码用 Pass@1。
 
@@ -42,9 +42,9 @@
 | 设置 | GSM8K | MATH | HotPotQA EM | HotPotQA F1 | SQuAD v2 EM | SQuAD v2 F1 | MBPP | HumanEval | <b>IID 均值</b> |
 |---|---|---|---|---|---|---|---|---|---|
 | <b>完整（12 个算子）</b> | <b>96.09<sub>±0.5</sub></b> | <b>81.25<sub>±0.5</sub></b> | <b>78.12<sub>±0.6</sub></b> | <b>84.98<sub>±0.3</sub></b> | <b>78.12<sub>±0.7</sub></b> | <b>83.67<sub>±0.5</sub></b> | <b>84.38<sub>±0.5</sub></b> | <b>92.96<sub>±0.8</sub></b> | <b>85.15<sub>±0.4</sub></b> |
-| −Review, Revise | 96.09<sub>±0.3</sub> | 81.25<sub>±0.3</sub> | 71.09<sub>±0.1</sub> | 77.39<sub>±0.6</sub> | 73.44<sub>±0.6</sub> | 77.83<sub>±0.5</sub> | 84.38<sub>±0.5</sub> | 92.96<sub>±0.5</sub> | <b>83.2<sub>±0.8</sub></b> (−1.95) |
-| −ScEnsemble, Aggr. | 96.09<sub>±0.3</sub> | 81.25<sub>±0.5</sub> | 75.78<sub>±0.5</sub> | 81.44<sub>±0.8</sub> | 78.12<sub>±0.7</sub> | 82.32<sub>±0.5</sub> | 84.38<sub>±0.8</sub> | 92.96<sub>±0.8</sub> | <b>84.76<sub>±0.4</sub></b> (−0.39) |
-| −Verify, Test | 94.53<sub>±0.8</sub> | 70.31<sub>±0.2</sub> | 78.12<sub>±0.7</sub> | 83.33<sub>±0.7</sub> | 75.78<sub>±0.5</sub> | 82.9<sub>±0.5</sub> | 78.91<sub>±0.9</sub> | 86.72<sub>±0.9</sub> | <b>80.73<sub>±0.8</sub></b> (−4.43) |
+| −Review,&amp;nbsp;Revise | 96.09<sub>±0.3</sub> | 81.25<sub>±0.3</sub> | 71.09<sub>±0.1</sub> | 77.39<sub>±0.6</sub> | 73.44<sub>±0.6</sub> | 77.83<sub>±0.5</sub> | 84.38<sub>±0.5</sub> | 92.96<sub>±0.5</sub> | <b>83.2<sub>±0.8</sub></b> (−1.95) |
+| −ScEnsemble,&amp;nbsp;Aggr. | 96.09<sub>±0.3</sub> | 81.25<sub>±0.5</sub> | 75.78<sub>±0.5</sub> | 81.44<sub>±0.8</sub> | 78.12<sub>±0.7</sub> | 82.32<sub>±0.5</sub> | 84.38<sub>±0.8</sub> | 92.96<sub>±0.8</sub> | <b>84.76<sub>±0.4</sub></b> (−0.39) |
+| −Verify,&amp;nbsp;Test | 94.53<sub>±0.8</sub> | 70.31<sub>±0.2</sub> | 78.12<sub>±0.7</sub> | 83.33<sub>±0.7</sub> | 75.78<sub>±0.5</sub> | 82.9<sub>±0.5</sub> | 78.91<sub>±0.9</sub> | 86.72<sub>±0.9</sub> | <b>80.73<sub>±0.8</sub></b> (−4.43) |
 | 最小配置（4 个算子） | 90.62<sub>±0.5</sub> | 68.75<sub>±0.2</sub> | 65.63<sub>±0.3</sub> | 70.93<sub>±0.5</sub> | 71.09<sub>±0.2</sub> | 75.88<sub>±0.7</sub> | 78.91<sub>±0.4</sub> | 86.72<sub>±0.5</sub> | <b>76.95<sub>±0.1</sub></b> (−8.20) |
 
 ### OOD 基准
@@ -52,9 +52,9 @@
 | 设置 | TriviaQA EM | TriviaQA F1 | NQ EM | NQ F1 | MathQA | AIME 2025 | APPS | DS-1000 | <b>OOD 均值</b> |
 |---|---|---|---|---|---|---|---|---|---|
 | <b>完整（12 个算子）</b> | <b>79.69<sub>±0.1</sub></b> | <b>84.11<sub>±0.6</sub></b> | <b>54.69<sub>±0.8</sub></b> | <b>62.56<sub>±0.2</sub></b> | <b>88.67<sub>±0.7</sub></b> | <b>26.67<sub>±0.3</sub></b> | <b>49.21<sub>±0.6</sub></b> | <b>58.59<sub>±0.7</sub></b> | <b>59.59<sub>±0.9</sub></b> |
-| −Review, Revise | 79.69<sub>±0.6</sub> | 83.98<sub>±0.6</sub> | 50.78<sub>±0.2</sub> | 58.49<sub>±0.4</sub> | 88.67<sub>±0.6</sub> | 26.67<sub>±0.7</sub> | 49.21<sub>±0.9</sub> | 58.59<sub>±0.5</sub> | <b>58.94<sub>±0.7</sub></b> (−0.65) |
-| −ScEnsemble, Aggr. | 79.69<sub>±0.2</sub> | 84.05<sub>±0.3</sub> | 53.12<sub>±0.6</sub> | 60.97<sub>±0.9</sub> | 88.67<sub>±0.8</sub> | 20.0<sub>±0.5</sub> | 49.21<sub>±0.2</sub> | 58.59<sub>±0.6</sub> | <b>58.21<sub>±0.8</sub></b> (−1.38) |
-| −Verify, Test | 79.69<sub>±0.7</sub> | 84.09<sub>±0.8</sub> | 54.69<sub>±0.3</sub> | 61.98<sub>±0.4</sub> | 85.16<sub>±0.7</sub> | 20.0<sub>±0.5</sub> | 35.16<sub>±0.3</sub> | 38.28<sub>±0.1</sub> | <b>52.16<sub>±0.2</sub></b> (−7.43) |
+| −Review,&amp;nbsp;Revise | 79.69<sub>±0.6</sub> | 83.98<sub>±0.6</sub> | 50.78<sub>±0.2</sub> | 58.49<sub>±0.4</sub> | 88.67<sub>±0.6</sub> | 26.67<sub>±0.7</sub> | 49.21<sub>±0.9</sub> | 58.59<sub>±0.5</sub> | <b>58.94<sub>±0.7</sub></b> (−0.65) |
+| −ScEnsemble,&amp;nbsp;Aggr. | 79.69<sub>±0.2</sub> | 84.05<sub>±0.3</sub> | 53.12<sub>±0.6</sub> | 60.97<sub>±0.9</sub> | 88.67<sub>±0.8</sub> | 20.0<sub>±0.5</sub> | 49.21<sub>±0.2</sub> | 58.59<sub>±0.6</sub> | <b>58.21<sub>±0.8</sub></b> (−1.38) |
+| −Verify,&amp;nbsp;Test | 79.69<sub>±0.7</sub> | 84.09<sub>±0.8</sub> | 54.69<sub>±0.3</sub> | 61.98<sub>±0.4</sub> | 85.16<sub>±0.7</sub> | 20.0<sub>±0.5</sub> | 35.16<sub>±0.3</sub> | 38.28<sub>±0.1</sub> | <b>52.16<sub>±0.2</sub></b> (−7.43) |
 | 最小配置（4 个算子） | 78.12<sub>±0.8</sub> | 81.22<sub>±0.1</sub> | 48.44<sub>±0.4</sub> | 58.17<sub>±0.4</sub> | 85.16<sub>±0.7</sub> | 16.67<sub>±0.1</sub> | 35.16<sub>±0.5</sub> | 38.28<sub>±0.4</sub> | <b>50.3<sub>±0.3</sub></b> (−9.29) |
 
 最小配置：仅保留 Plan、Programmer、Custom、Format。

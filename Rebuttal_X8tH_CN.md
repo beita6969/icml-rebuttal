@@ -10,10 +10,10 @@
 
 | 变体 | IID 均值 | OOD 均值 |
 |---|---|---|
-| CWRPO (Full) | 85.15 | 59.59 |
-| w/o Token Masking | 79.82 (−5.34) | 52.06 (−7.52) |
-| w/o Diversity Reward | 80.08 (−5.08) | 50.30 (−9.28) |
-| w/o Cond. Release | 80.86 (−4.30) | 52.85 (−6.74) |
+| CWRPO&amp;nbsp;(Full) | 85.15 | 59.59 |
+| w/o&amp;nbsp;Token&amp;nbsp;Masking | 79.82 (−5.34) | 52.06 (−7.52) |
+| w/o&amp;nbsp;Diversity&amp;nbsp;Reward | 80.08 (−5.08) | 50.30 (−9.28) |
+| w/o&amp;nbsp;Cond.&amp;nbsp;Release | 80.86 (−4.30) | 52.85 (−6.74) |
 
 关于奖励敏感性，**表 R5** 在保持所有机制激活的条件下测试 5 种配置：等权重（0.25×4）达 IID 82.29 / OOD 55.58；Checker-heavy（0.4/0.2/0.2/0.2）达 IID 82.94 / OOD 54.41；min_ops ∈ {3, 4, 7} 达 IID 80.73–81.51 / OOD 52.29–53.92——所有变体均为渐进退化（IID −2.21 至 −4.42，OOD −4.01 至 −7.30）vs. 默认 IID 85.15 / OOD 59.59，证实对奖励塑形选择的鲁棒性。
 

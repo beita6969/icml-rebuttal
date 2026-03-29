@@ -40,9 +40,9 @@ We have completed this ablation (**Table R1**), removing each component independ
 
 | Variant | IID Avg. | Δ | OOD Avg. | Δ |
 |---|---|---|---|---|
-| CWRPO (Full) | 85.15 | — | 59.59 | — |
-| w/o Token Masking | 79.82 | −5.34 | 52.06 | −7.52 |
-| w/o Diversity Reward | 80.08 | −5.08 | 50.30 | −9.28 |
-| w/o Cond. Release | 80.86 | −4.30 | 52.85 | −6.74 |
+| CWRPO&amp;nbsp;(Full) | 85.15 | — | 59.59 | — |
+| w/o&amp;nbsp;Token&amp;nbsp;Masking | 79.82 | −5.34 | 52.06 | −7.52 |
+| w/o&amp;nbsp;Diversity&amp;nbsp;Reward | 80.08 | −5.08 | 50.30 | −9.28 |
+| w/o&amp;nbsp;Cond.&amp;nbsp;Release | 80.86 | −4.30 | 52.85 | −6.74 |
 
 Each component is essential with a distinct role: token masking stabilizes math (MATH −13.28); diversity reward ensures OOD generalization (AIME −10.00, DS-1000 −12.50); conditional release suppresses QA shortcuts (TriviaQA EM −9.38). With Table 5 (framework) and Table 6 (algorithm), this forms three complementary ablation levels.
