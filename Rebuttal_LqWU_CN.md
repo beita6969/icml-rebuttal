@@ -1,6 +1,6 @@
 感谢审稿人对我们问题建模和广泛评估的认可。以下通过新实验逐一回应各项关切（完整数据见 https://anonymous.4open.science/r/Supplementary）。
 
-> **W1/Q1：CWRPO 组件级消融（新增：Table R1 | 论文：Tables 5, 6）**None
+**W1/Q1：CWRPO 组件级消融（新增：Table R1 | 论文：Tables 5, 6）**
 我们已在全部 12 个基准上完成该消融，在相同训练设置下逐一移除各组件（新**表 R1**）：
 
 | 变体 | IID 均值 | Δ | OOD 均值 | Δ |
@@ -10,16 +10,16 @@
 | 去除 Diversity Reward | 80.08 | −5.08 | 50.30 | −9.28 |
 | 去除 Cond. Release | 80.86 | −4.30 | 52.85 | −6.74 |
 
-各组件解决不同挑战：** (1) Token Masking** 解决多轮信用分配——环境 token 污染梯度，数学推理退化最严重（MATH −13.28，MathQA −10.55）。** (2) Diversity Reward** 防止结构模式坍缩——策略收敛到捷径 workflow，在未见分布上失败（OOD 下降最大 −9.28；AIME −10.00，DS-1000 −12.50，APPS −11.71）。** (3) Conditional Release** 防止过早收敛——缺失课程门控后策略提前终止，开放域 QA 退化最大（TriviaQA EM −9.38，NQ EM −7.81）。三类失效正交（影响不同任务，无法互补），证明 CWRPO 是最小完备设计。结合 Table 5（框架级）和 Table 6（RL 算法级），构成三层消融体系。
+各组件解决不同挑战：**(1) Token Masking** 解决多轮信用分配——环境 token 污染梯度，数学推理退化最严重（MATH −13.28，MathQA −10.55）。**(2) Diversity Reward** 防止结构模式坍缩——策略收敛到捷径 workflow，在未见分布上失败（OOD 下降最大 −9.28；AIME −10.00，DS-1000 −12.50，APPS −11.71）。**(3) Conditional Release** 防止过早收敛——缺失课程门控后策略提前终止，开放域 QA 退化最大（TriviaQA EM −9.38，NQ EM −7.81）。三类失效正交（影响不同任务，无法互补），证明 CWRPO 是最小完备设计。结合 Table 5（框架级）和 Table 6（RL 算法级），构成三层消融体系。
 
-> **W2/Q2：算子库迁移（新增：Tables R2–R4 | 论文：Table 7, Prop. 1）**None
+**W2/Q2：算子库迁移（新增：Tables R2–R4 | 论文：Table 7, Prop. 1）**
 我们完成了三层迁移实验（新**表 R2–R4**），评估算子库在修改下的表现。
 
 *删除*（新**表 R2**）：测试时移除算子组，不重训。每组移除导致针对性退化：−Verify/Test 对代码影响最大（APPS 49.21→35.16，DS-1000 58.59→38.28），−Review/Revise 对 QA 影响最大（HotPotQA EM −7.03，SQuAD v2 EM −4.68），−ScEnsemble/Aggregate 对高难度问题影响显著（AIME 26.67→20.00）。这证实了 7 个认知原语的满射覆盖（Proposition 4，附录 B.1）。即使最小 4 算子配置（低于理论最小值 5）仍达 IID 76.95 / OOD 50.30——渐进退化而非灾难性崩溃，证明编排策略的鲁棒性。
 
 *替换与新增*（新**表 R3–R4**）：用未见替代实现替换（Programmer→Jupyter Kernel，Custom→Generate with Skills），几乎无损，均值 IID 85.42（+0.3）/ OOD 59.69（+0.1）。新增训练时未见的算子在目标任务上选择性提升——+Search：TriviaQA/NQ +5.47/+8.59 EM；+Debugger：APPS/DS-1000 +2.35/+3.91——非目标零退化。两项能力源于分解式动作空间（Proposition 1）：$O(\\lvert\\mathcal{A}\_{\\text{type}}\\rvert + \\lvert\\mathcal{O}\\rvert)$ 复杂度，语义选择算子（Table 7）实现零样本迁移。
 
-> **W3/Q3：结构先验敏感性（新增：Tables R5, R6 | 论文：Prop. 4, Figure 5）**None
+**W3/Q3：结构先验敏感性（新增：Tables R5, R6 | 论文：Prop. 4, Figure 5）**
 **结构约束是理论必要的，而非启发式设定。** Proposition 4（附录 B.1）定义了完整 workflow 必须覆盖的 7 个认知原语：生成、验证、聚合、条件分支、顺序链接、集成和格式化。通过满射覆盖（公式 19–25）证明每个原语需至少一个算子实现，且某些原语（如验证 vs. 生成）需功能上不同的实现，理论最小值为 5 个算子。
 
 **实验证实 min_ops=5 是最优实践值。** 新**表 R5**（Part A）从头重训 min_ops ∈ {3, 4, 5, 7}：低于最小值（3–4）导致覆盖缺口（IID 80.73–81.51，OOD 52.29–52.32）；高于最小值（7）过度约束无收益（IID 80.99，OOD 53.92）。默认 min_ops=5 最优：IID 85.15 / OOD 59.59，领先至少 +3.64 / +5.67。Part B 测试奖励权重：等权重（0.25×4）达 IID 82.29 / OOD 55.58；Checker-heavy（0.4/0.2/0.2/0.2）达 IID 82.94 / OOD 54.41。所有配置渐进退化（IID −2.21 至 −4.42），证实鲁棒性。
