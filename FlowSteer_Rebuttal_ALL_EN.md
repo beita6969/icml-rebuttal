@@ -29,7 +29,9 @@ Thank you for this suggestion. To our knowledge, no prior work (AFlow: 6 fixed o
 
 *Substitution* (**Table R3**): Replacing operators (Programmer→Jupyter, Custom→RAG, Review→LLM-Judge) yields IID XX.XX (−X.X) / OOD XX.XX (−X.X). Flow-Director selects operators via semantic descriptions (Table 7), not hard-coded indices, and adapts through canvas feedback without retraining.
 
-*Addition* (**Table R4**): Novel operators unseen during training (WebSearch, Summarizer, Debugger) are autonomously discovered and utilized, achieving IID XX.XX (+X.X) / OOD XX.XX (+X.X), enabled by the factored action space ( $O(\lvert A_\text{type}\rvert+\lvert\mathcal{O}\rvert)$ , Section 4.1).
+*Addition* (**Table R4**): Novel operators unseen during training (WebSearch, Summarizer, Debugger) are autonomously discovered and utilized, achieving IID XX.XX (+X.X) / OOD XX.XX (+X.X), enabled by the factored action space (Section 4.1):
+
+$$O(\lvert\mathcal{A}_{\text{type}}\rvert + \lvert\mathcal{O}\rvert)$$
 
 **W3/Q3: Structural prior sensitivity**
 
@@ -112,7 +114,11 @@ We thank the reviewer for recognizing the cleverness of the conditional release 
 
 We agree this is an important practical consideration. We address it from three perspectives:
 
-(1) *Theoretical scalability*: The factored action space (Section 4.1) yields $O(\lvert\mathcal{A}_\text{type}\rvert + \lvert\mathcal{O}\rvert)$ complexity — adding operators grows cost linearly, not combinatorially. Flow-Director selects operators via semantic descriptions (Table 7), not indices, enabling disambiguation of overlapping tools.
+(1) *Theoretical scalability*: The factored action space (Section 4.1) yields complexity that grows linearly, not combinatorially:
+
+$$O(\lvert\mathcal{A}_{\text{type}}\rvert + \lvert\mathcal{O}\rvert)$$
+
+Adding operators grows cost linearly. Flow-Director selects operators via semantic descriptions (Table 7), not indices, enabling disambiguation of overlapping tools.
 
 (2) *Distractor operator experiment* (**Table R7**): We inject functionally overlapping "distractor" operators at test time (without retraining), scaling the library from 12 to 15/18/24 operators. Results: IID XX.XX / XX.XX / XX.XX and OOD XX.XX / XX.XX / XX.XX. Even doubling the library to 24 operators causes only IID −X.X / OOD −X.X degradation — the semantic selection mechanism and canvas feedback effectively disambiguate overlapping functions.
 
@@ -198,5 +204,7 @@ Vectorized rollout (Appendix G): 32-way concurrency, batched API calls, cached s
 
 **Q5: Cross-backend generalization**
 
-We address this in Section 5.4 (RQ3): Figure 4(a) radar charts across 6 backends (DeepSeek-V3.2, Grok-4.1-Fast, GPT-5.2, Claude-Opus-4.5, Gemini-3-Flash, Qwen-Plus-Latest); Figure 4(b) aggregated gains by task category; Figure 4(c) convergent training dynamics for GPT-4o-mini and OSS-120B. Generalization stems from orchestrating at the *workflow structure level* via semantic operator descriptions (Table 7), not backend-specific tokens. The factored action space $O(\lvert A_\text{type}\rvert+\lvert\mathcal{O}\rvert)$ requires zero backend adaptation.
+We address this in Section 5.4 (RQ3): Figure 4(a) radar charts across 6 backends (DeepSeek-V3.2, Grok-4.1-Fast, GPT-5.2, Claude-Opus-4.5, Gemini-3-Flash, Qwen-Plus-Latest); Figure 4(b) aggregated gains by task category; Figure 4(c) convergent training dynamics for GPT-4o-mini and OSS-120B. Generalization stems from orchestrating at the *workflow structure level* via semantic operator descriptions (Table 7), not backend-specific tokens. The factored action space requires zero backend adaptation:
+
+$$O(\lvert\mathcal{A}_{\text{type}}\rvert + \lvert\mathcal{O}\rvert)$$
 

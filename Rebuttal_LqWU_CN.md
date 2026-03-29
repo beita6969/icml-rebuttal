@@ -21,7 +21,11 @@
 
 *删除*（**表 R2**）：测试时直接移除算子组，不重新训练。每组移除均导致对应任务的针对性退化：−Verify/Test 对代码影响最大（APPS 49.21→35.16，DS-1000 58.59→38.28），−Review/Revise 对 QA 影响最大（HotPotQA EM −7.03，SQuAD v2 EM −4.68），−ScEnsemble/Aggregate 对高难度问题影响显著（AIME 26.67→20.00）。这证实了我们的 12 个算子对 Proposition 4（附录 B.1，公式 19–25）中定义的 7 个认知原语实现了满射覆盖——每组算子映射到不同的功能角色，移除任一组均会产生可观测的覆盖缺口。值得注意的是，即使最小 4 算子配置（已低于 Proposition 4 中的理论最小值 5）仍可达 IID 76.95 / OOD 50.30——呈渐进退化而非灾难性崩溃，证明了所学编排策略的鲁棒性。
 
-*替换与新增*（**表 R3–R4**）：用未见过的替代实现替换算子（Programmer→Jupyter Kernel，Custom→Generate with Skills），性能几乎无损，均值 IID 85.42（+0.3）/ OOD 59.69（+0.1）。添加训练时完全未见的新算子则在目标任务上选择性提升——+Search：TriviaQA/NQ +5.47/+8.59 EM；+Debugger：APPS/DS-1000 +2.35/+3.91——其他任务零退化。两项能力均源于分解式动作空间 $O(\lvert\mathcal{A}_\text{type}\rvert + \lvert\mathcal{O}\rvert)$（Proposition 1）：Flow-Director 基于语义描述（Table 7）而非索引选择算子，实现对未见实现的零样本迁移。
+*替换与新增*（**表 R3–R4**）：用未见过的替代实现替换算子（Programmer→Jupyter Kernel，Custom→Generate with Skills），性能几乎无损，均值 IID 85.42（+0.3）/ OOD 59.69（+0.1）。添加训练时完全未见的新算子则在目标任务上选择性提升——+Search：TriviaQA/NQ +5.47/+8.59 EM；+Debugger：APPS/DS-1000 +2.35/+3.91——其他任务零退化。两项能力均源于分解式动作空间（Proposition 1）：
+
+$$O(\lvert\mathcal{A}_{\text{type}}\rvert + \lvert\mathcal{O}\rvert)$$
+
+Flow-Director 基于语义描述（Table 7）而非索引选择算子，实现对未见实现的零样本迁移。
 
 **W3/Q3：结构先验敏感性**
 
