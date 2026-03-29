@@ -41,7 +41,7 @@ FlowSteer uniquely *dynamically edits the workflow graph* (Definition 1) with pe
 
 **FlowSteer's multi-turn overhead is manageable.** Appendix C shows $O(NT)$ training and $O(T)$ inference complexity, mitigated by vectorized rollout (Appendix G): 32-way concurrent trajectories, batched API calls, cached states, and early-finish skipping.
 
-FlowSteer trains once and deploys zero-shot to 6 backends (Figure 4) without per-backend tuning. New **Table R6** confirms task-proportional inference: GSM8K averages 8.3 turns / \$0.0012 vs. AIME 12.4 turns / \$0.0019 (Spearman ρ=0.65, p=0.021).
+FlowSteer trains once and deploys zero-shot to 6 or more backends (Figure 4) without per-backend tuning. New **Table R6** confirms task-proportional inference: GSM8K averages 8.3 turns / \$0.0012 vs. AIME 12.4 turns / \$0.0019 (Spearman ρ=0.65, p=0.021).
 
 **Q5: Cross-backend generalization** (Paper: Figure 4 | New: Tables R2–R4)
 

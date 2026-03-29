@@ -16,7 +16,7 @@ We acknowledge that extending to significantly larger operator libraries is an i
 
 We provide a concrete cost analysis. FlowSteer trains in ~8 GPU-hours on 2×A100 80GB (~300 steps). The apparent cost of "36 trajectories × 20 rounds" is mitigated by vectorized rollout (Appendix G): 32-way concurrent trajectory interaction, batched API calls, cached workflow states, and early-finish skipping.
 
-Crucially, FlowSteer trains once and deploys zero-shot to 6 architecturally diverse backends (Figure 4), requiring no per-backend tuning.
+Crucially, FlowSteer trains once and deploys zero-shot to 6 or more architecturally diverse backends (Figure 4), requiring no per-backend tuning.
 
 At inference, FlowSteer is *more* efficient: Figure 5(a-b) shows CWRPO (Full) uses fewer tokens and turns than all ablation variants — RL teaches the policy when to stop. New Table R6 confirms task-proportional cost: GSM8K averages 8.3 turns / \$0.0012 vs. AIME 12.4 turns / \$0.0019 per problem.
 
