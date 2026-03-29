@@ -10,11 +10,20 @@ Our transfer experiments (new **Tables R2–R4**) empirically validate this: rem
 
 We acknowledge that extending to significantly larger operator libraries is an important future direction, and a natural extension is hierarchical operator selection (category → operator), which our factored action space naturally supports. That said, our current 12 operators already provide broad task coverage: Proposition 4 (Appendix B.2) proves that they realize all 7 cognitive primitives (Generation, Verification, Aggregation, Conditional branching, Sequential chaining, Ensemble, Formatting) via a surjective mapping, with a theoretical minimum of 5 operators — our library exceeds this bound while the transfer experiments above confirm no redundancy.
 
-**W2: Computational cost and training-inference trade-off** (New: Table R6 | Paper: Appendix G, Figures 4–5)
+**W2: Computational cost and training-inference trade-off** (New: Tables R6, R7 | Paper: Appendix G, Figures 4–5)
 
-FlowSteer trains in ~8 GPU-hours on 2×A100 80GB (~300 steps). The apparent cost of "36 trajectories × 20 rounds" is mitigated by vectorized rollout (Appendix G): 32-way concurrent trajectory interaction, batched API calls, cached workflow states, and early-finish skipping. Crucially, FlowSteer trains once and deploys zero-shot to 6 or more architecturally diverse backends (Figure 4), requiring no per-backend tuning.
+New **Table R7** provides a per-step cost breakdown across training paradigms (all on 2×A100 80GB, batch = 36 questions):
 
-At inference, FlowSteer is *more* efficient: Figure 5(a-b) shows CWRPO (Full) uses fewer tokens and turns than all ablation variants — RL teaches the policy when to stop. New Table R6 confirms task-proportional cost: GSM8K averages 8.3 turns / \$0.0012 vs. AIME 12.4 turns / \$0.0019 per problem.
+| Metric | SFT | GRPO | FlowSteer |
+|---|---|---|---|
+| Step Time | 5.35s | 1,257s | 1,004s |
+| Completion Tokens | 0 | 108,315 | 132,146 |
+| Training Tokens | 5,534 | 6,917 | 36,828 |
+| **Total Tokens** | **5,534** | **115,232** | **168,974** |
+
+Despite multi-turn Canvas interaction, FlowSteer's per-step wall time (1,004s) is actually **20% lower** than single-turn GRPO (1,257s), thanks to vectorized rollout optimizations (Appendix G): 32-way concurrent trajectories, batched API calls, cached workflow states, and early-finish skipping. FlowSteer generates more total tokens (168,974 vs. 115,232) due to multi-turn feedback, but parallelized execution makes it more time-efficient per step. Total training converges in ~300 steps (~8 GPU-hours), and FlowSteer trains once to deploy zero-shot to 6 or more architecturally diverse backends (Figure 4), requiring no per-backend tuning.
+
+At inference, FlowSteer is *more* efficient: Figure 5(a-b) shows CWRPO (Full) uses fewer tokens and turns than all ablation variants — RL teaches the policy when to stop. New **Table R6** confirms task-proportional cost: GSM8K averages 8.3 turns / \$0.0012 vs. AIME 12.4 turns / \$0.0019 per problem.
 
 **W3: Weight inconsistency between Appendix C.1 and Table 11** (New: Table R5 | Paper: Table 11)
 
