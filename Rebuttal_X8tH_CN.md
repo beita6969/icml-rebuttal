@@ -1,6 +1,4 @@
-# 审稿人 X8tH（评分：4，弱接受）
-
-感谢审稿人的积极评价。以下逐一回应各项关切，结合已有理论分析和新实验数据（完整数据见 https://anonymous.4open.science/r/Supplementary）。
+感谢审稿人的积极评价。以下结合已有理论分析和新实验数据逐一回应各项关切（完整数据见 https://anonymous.4open.science/r/Supplementary）。
 
 **W1/Q1：理论基础与奖励稳定性**（新增：Tables R1, R5 | 论文：Prop. 3）
 
@@ -29,7 +27,7 @@
 
 (3) **CWRPO 组件级**（上述表 R1）：独立隔离多样性约束、条件释放和 token 掩码。
 
-交叉层次 (1) 和 (3) 直接回答 Q2：多轮 formulation 贡献 IID −5.15（Table 5），CWRPO 各机制贡献 −4.30 至 −5.34（表 R1）。两者均为实质性贡献且互补——多轮提供迭代细化能力，CWRPO 提供有效利用该能力的学习信号。
+交叉层次 (1) 和 (3) 直接回答 Q2：多轮 formulation 贡献 IID −5.15（Table 5），而 CWRPO 各机制贡献 −4.30 至 −5.34（表 R1）。两者实质性且互补——多轮提供迭代细化能力，CWRPO 提供有效利用该能力的学习信号。
 
 **W3/Q3：与 RL agent 框架的定位**（论文：Appendix E, Table 12）
 

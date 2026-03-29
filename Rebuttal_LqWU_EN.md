@@ -1,5 +1,3 @@
-# Reviewer LqWU (Score: 4, Weak Accept)
-
 We thank the reviewer for recognizing our problem framing and broad evaluation. We address each concern with new experiments (full tables in https://anonymous.4open.science/r/Supplementary).
 
 **W1/Q1: Component-level ablation of CWRPO** (New: Table R1 | Paper: Tables 5, 6)
@@ -17,7 +15,7 @@ Each component addresses a distinct challenge: **(1) Token Masking** solves mult
 
 **W2/Q2: Operator library transfer** (New: Tables R2–R4 | Paper: Table 7, Prop. 1)
 
-We conduct three tiers of transfer experiments (new **Tables R2–R4**).
+We conduct three tiers of transfer experiments (new **Tables R2–R4**) to evaluate how FlowSteer's operator library behaves under modification.
 
 *Removal* (new **Table R2**): Removing operator groups at test time without retraining causes task-specific degradation: −Verify/Test impacts code most (APPS 49.21→35.16, DS-1000 58.59→38.28), −Review/Revise impacts QA (HotPotQA EM −7.03), −ScEnsemble/Aggregate impacts hard problems (AIME 26.67→20.00). This confirms surjective coverage over the 7 cognitive primitives (Proposition 4). Even a minimal 4-operator configuration achieves IID 76.95 / OOD 50.30 — graceful degradation, demonstrating robustness of the learned orchestration policy.
 

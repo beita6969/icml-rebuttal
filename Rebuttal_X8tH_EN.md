@@ -1,6 +1,4 @@
-# Reviewer X8tH (Score: 4, Weak Accept)
-
-We thank the reviewer. We address each concern with existing theory and new experiments (full tables in https://anonymous.4open.science/r/Supplementary).
+We thank the reviewer for the positive assessment. We address each concern with existing theory and new experiments (full tables in https://anonymous.4open.science/r/Supplementary).
 
 **W1/Q1: Theoretical grounding and reward stability** (New: Tables R1, R5 | Paper: Prop. 3)
 
@@ -29,7 +27,7 @@ We designed **three complementary ablation levels** to disentangle each factor's
 
 (3) **CWRPO component-level** (Table R1 above): Isolates diversity constraints, conditional release, and token masking individually.
 
-Crossing levels (1) and (3) directly answers Q2: the multi-turn formulation contributes IID −5.15 (Table 5), while the CWRPO-specific mechanisms contribute −4.30 to −5.34 each (Table R1). Both are substantial and complementary — multi-turn provides iterative refinement capability, while CWRPO provides the learning signal to use it effectively.
+Crossing levels (1) and (3) directly answers Q2: the multi-turn formulation contributes IID −5.15 (Table 5), while CWRPO-specific mechanisms contribute −4.30 to −5.34 each (Table R1). Both are substantial and complementary — multi-turn provides the iterative refinement capability, while CWRPO provides the learning signal to exploit it effectively.
 
 **W3/Q3: Positioning relative to RL-based agentic methods** (Paper: Appendix E, Table 12)
 

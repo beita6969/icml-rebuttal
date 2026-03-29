@@ -1,5 +1,3 @@
-# Reviewer igcB (Score: 3, Weak Reject)
-
 We thank the reviewer for recognizing the conditional release mechanism, comprehensive evaluation, and plug-and-play design. We address each concern below (full tables in https://anonymous.4open.science/r/Supplementary).
 
 **W1: Operator library scalability with overlapping tools** (New: Tables R2–R4 | Paper: Prop. 1, 4)
@@ -14,9 +12,7 @@ We acknowledge that extending to significantly larger operator libraries is an i
 
 **W2: Computational cost and training-inference trade-off** (New: Table R6 | Paper: Appendix G, Figures 4–5)
 
-We provide a concrete cost analysis. FlowSteer trains in ~8 GPU-hours on 2×A100 80GB (~300 steps). The apparent cost of "36 trajectories × 20 rounds" is mitigated by vectorized rollout (Appendix G): 32-way concurrent trajectory interaction, batched API calls, cached workflow states, and early-finish skipping.
-
-Crucially, FlowSteer trains once and deploys zero-shot to 6 or more architecturally diverse backends (Figure 4), requiring no per-backend tuning.
+FlowSteer trains in ~8 GPU-hours on 2×A100 80GB (~300 steps). The apparent cost of "36 trajectories × 20 rounds" is mitigated by vectorized rollout (Appendix G): 32-way concurrent trajectory interaction, batched API calls, cached workflow states, and early-finish skipping. Crucially, FlowSteer trains once and deploys zero-shot to 6 or more architecturally diverse backends (Figure 4), requiring no per-backend tuning.
 
 At inference, FlowSteer is *more* efficient: Figure 5(a-b) shows CWRPO (Full) uses fewer tokens and turns than all ablation variants — RL teaches the policy when to stop. New Table R6 confirms task-proportional cost: GSM8K averages 8.3 turns / \$0.0012 vs. AIME 12.4 turns / \$0.0019 per problem.
 

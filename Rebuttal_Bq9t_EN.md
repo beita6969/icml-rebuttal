@@ -1,10 +1,8 @@
-# Reviewer Bq9t (Score: 3, Weak Reject)
-
 We thank the reviewer for recognizing our operator library and diversity-constrained reward. We address each concern below (full tables in https://anonymous.4open.science/r/Supplementary).
 
 **W1: Design differences from existing methods** (Paper: Table 5, Def. 1)
 
-We clarify the key architectural distinctions via the following comparison:
+The following comparison clarifies the key architectural distinctions:
 
 | | Orchestration | Workflow | Prompt | Training |
 |---|---|---|---|---|
@@ -32,7 +30,7 @@ CWRPO differs from GRPO in three ways *at the objective level*, not merely in th
 
 **(3) Source-partitioned advantage normalization**: Advantages use within-source statistics $(\\mu\_{src}, \\sigma\_{src})$, preventing cross-task advantage collapse. GRPO uses global batch statistics.
 
-Table 6 confirms: CWRPO outperforms GRPO on all 6 IID benchmarks (GSM8K 96.09 vs. 92.97, MATH 81.25 vs. 73.43, HotPotQA 78.12 vs. 72.66).
+Table 6 confirms the combined effect: CWRPO outperforms GRPO on all 6 IID benchmarks (GSM8K 96.09 vs. 92.97, MATH 81.25 vs. 73.43, HotPotQA 78.12 vs. 72.66).
 
 **W4: Reward component ablation** (New: Table R1 | Paper: Tables 5, 6)
 
